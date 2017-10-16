@@ -1,0 +1,2484 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="generator" content="Jekyll v3.1.6">
+  <link type="application/atom+xml" rel="alternate" href="http://www.frida.re/feed.xml" title="Frida • A world-class dynamic instrumentation framework" />
+  <link rel="alternate" type="application/atom+xml" title="Recent commits to Frida’s master branch" href="https://github.com/frida/frida/commits/master.atom" />
+  <link rel="stylesheet" href="/css/screen.css" />
+  <link rel="icon" type="image/png" href="/favicon.ico" />
+  <!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>Android - Frida • A world-class dynamic instrumentation framework</title>
+<meta property="og:title" content="Android" />
+<meta name="description" content="Inject JavaScript to explore native apps on Windows, macOS, Linux, iOS, Android, and QNX" />
+<meta property="og:description" content="Inject JavaScript to explore native apps on Windows, macOS, Linux, iOS, Android, and QNX" />
+<link rel="canonical" href="http://www.frida.re/docs/android/" />
+<meta property="og:url" content="http://www.frida.re/docs/android/" />
+<meta property="og:site_name" content="Frida • A world-class dynamic instrumentation framework" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-05-29T03:26:45+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@fridadotre" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Android",
+    "datePublished": "2017-05-29T03:26:45+02:00",
+    "description": "Inject JavaScript to explore native apps on Windows, macOS, Linux, iOS, Android, and QNX",
+    "url": "http://www.frida.re/docs/android/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+  <script src="/js/modernizr-2.5.3.min.js"></script>
+</head>
+
+
+<body class="wrap">
+  <header>
+  <nav class="mobile-nav show-on-mobiles">
+    <ul>
+  <li class="">
+    <a href="/">Overview</a>
+  </li>
+  <li class="current">
+    <a href="/docs/home/">Docs</span></a>
+  </li>
+  <li class="">
+    <a href="/news/">News</a>
+  </li>
+  <li class="">
+    <a href="https://github.com/frida/frida">Code</a>
+  </li>
+  <li class="">
+    <a href="/contact/">Contact</a>
+  </li>
+</ul>
+
+  </nav>
+  <div class="grid">
+    <div class="logotype unit one-third center-on-mobiles">
+      <a href="/">
+        <span>FЯIDA</span>
+        <img src="/img/logotype.svg" width="205" height="39" alt="">
+      </a>
+    </div>
+    <nav class="main-nav unit two-thirds hide-on-mobiles">
+      <ul>
+  <li class="">
+    <a href="/">Overview</a>
+  </li>
+  <li class="current">
+    <a href="/docs/home/">Docs</span></a>
+  </li>
+  <li class="">
+    <a href="/news/">News</a>
+  </li>
+  <li class="">
+    <a href="https://github.com/frida/frida">Code</a>
+  </li>
+  <li class="">
+    <a href="/contact/">Contact</a>
+  </li>
+</ul>
+
+    </nav>
+  </div>
+</header>
+
+
+    <section class="docs">
+    <div class="grid">
+
+      <div class="docs-nav-mobile unit whole show-on-mobiles">
+  <select onchange="if (this.value) window.location.href=this.value">
+    <option value="">Navigate the docs…</option>
+    
+    <optgroup label="Getting Started">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/home/">Welcome</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/quickstart/">Quick-start guide</option>
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/installation/">Installation</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/usage/">Basic Usage</option>
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/modes/">Modes of Operation</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/hacking/">Hacking</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/presentations/">Presentations</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Tutorials">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/functions/">Functions</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/messages/">Messages</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/ios/">iOS</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+      <option value="/docs/android/">Android</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Examples">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/examples/windows/">Windows</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/examples/macos/">macOS</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/examples/linux/">Linux</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/examples/ios/">iOS</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/examples/android/">Android</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/examples/javascript/">JavaScript</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Tools">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/frida-cli/">Frida CLI</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/frida-ps/">frida-ps</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/frida-trace/">frida-trace</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/frida-discover/">frida-discover</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="API Reference">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/javascript-api/">JavaScript API</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+      <option value="/docs/c-api/">C API</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/swift-api/">Swift API</option>
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Miscellaneous">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/troubleshooting/">Troubleshooting</option>
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+      <option value="/docs/building/">Building</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Meta">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/contributing/">Contributing</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/gsoc-ideas-2015/">GSoC Ideas 2015</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/history/">History</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+  </select>
+</div>
+
+      <div class="docs-nav-desktop unit one-quarter hide-on-mobiles">
+  <aside>
+    
+    <h4>Getting Started</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/home/">Welcome</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/quickstart/">Quick-start guide</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/installation/">Installation</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/usage/">Basic Usage</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/modes/">Modes of Operation</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/hacking/">Hacking</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/presentations/">Presentations</a></li>
+
+
+</ul>
+
+    
+    <h4>Tutorials</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/functions/">Functions</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/messages/">Messages</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/ios/">iOS</a></li>
+
+
+  
+
+  
+
+  
+  <li class="current"><a href="/docs/android/">Android</a></li>
+
+
+</ul>
+
+    
+    <h4>Examples</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/examples/windows/">Windows</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/examples/macos/">macOS</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/examples/linux/">Linux</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/examples/ios/">iOS</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/examples/android/">Android</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/examples/javascript/">JavaScript</a></li>
+
+
+</ul>
+
+    
+    <h4>Tools</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/frida-cli/">Frida CLI</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/frida-ps/">frida-ps</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/frida-trace/">frida-trace</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/frida-discover/">frida-discover</a></li>
+
+
+</ul>
+
+    
+    <h4>API Reference</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/javascript-api/">JavaScript API</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/c-api/">C API</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/swift-api/">Swift API</a></li>
+
+
+</ul>
+
+    
+    <h4>Miscellaneous</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/troubleshooting/">Troubleshooting</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/building/">Building</a></li>
+
+
+</ul>
+
+    
+    <h4>Meta</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/contributing/">Contributing</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/gsoc-ideas-2015/">GSoC Ideas 2015</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/history/">History</a></li>
+
+
+</ul>
+
+    
+  </aside>
+</div>
+
+
+      <div class="docs-articles unit three-quarters">
+        <article>
+          <div class="improve right hide-on-mobiles">
+            <a href="https://github.com/frida/frida-website/edit/master/_docs/android.md"><i class="fa fa-pencil"></i>Improve this page</a>
+          </div>
+          <h1>Android</h1>
+          <p>In this tutorial we show how to do function tracing on your Android device.</p>
+
+<h2 id="setting-up-your-android-device">Setting up your Android device</h2>
+
+<p>Before you start, you will need to root your device in case you haven’t done so
+already. Also note that most of our testing has involved Android 4.4, and while
+we do support 4.2 all the way through 6.0, there’s for now limited support for
+ART and we would recommend that you start out with a Dalvik-powered ARM device
+or emulator for the time being.</p>
+
+<p>You will also need the <code>adb</code> tool from the Android SDK.</p>
+
+<p>First off, download the latest <code>frida-server</code> for Android from our <a href="https://github.com/frida/frida/releases">releases
+page</a> and get it running on your
+device:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>adb root <span class="c"># might be required</span>
+<span class="nv">$ </span>adb push frida-server /data/local/tmp/ 
+<span class="nv">$ </span>adb shell <span class="s2">&quot;chmod 755 /data/local/tmp/frida-server&quot;</span>
+<span class="nv">$ </span>adb shell <span class="s2">&quot;/data/local/tmp/frida-server &amp;&quot;</span></code></pre></figure>
+
+<p>For the last step, make sure you start frida-server as root, i.e. if you are
+doing this on a rooted device, you might need to <em>su</em> and run it from that
+shell.</p>
+
+<p>Next, make sure <code>adb</code> can see your device:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>adb devices -l</code></pre></figure>
+
+<p>This will also ensure that the adb daemon is running on your desktop, which
+allows Frida to discover and communicate with your device regardless of whether
+you’ve got it hooked up through USB or WiFi.</p>
+
+<h2 id="a-quick-smoke-test">A quick smoke-test</h2>
+
+<p>Now, on your desktop it’s time to make sure the basics are working. Run:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>frida-ps -U</code></pre></figure>
+
+<p>This should give you a process list along the lines of:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">  PID NAME
+ <span class="m">1590</span> com.facebook.katana
+<span class="m">13194</span> com.facebook.katana:providers
+<span class="m">12326</span> com.facebook.orca
+<span class="m">13282</span> com.twitter.android
+…</code></pre></figure>
+
+<p>Great, we’re good to go then!</p>
+
+<h2 id="tracing-open-calls-in-chrome">Tracing open() calls in Chrome</h2>
+
+<p>Alright, let’s have some fun. Fire up the Chrome app on your device and return
+to your desktop and run:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>frida-trace -U -i open com.android.chrome
+Uploading data...
+open: Auto-generated handler …/linker/open.js
+open: Auto-generated handler …/libc.so/open.js
+Started tracing <span class="m">2</span> functions. Press Ctrl+C to stop.</code></pre></figure>
+
+<p>Now just play around with the Chrome app and you should start seeing <code>open()</code>
+calls flying in:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="m">1392</span> ms	open<span class="o">()</span>
+<span class="m">1403</span> ms	open<span class="o">()</span>
+<span class="m">1420</span> ms	open<span class="o">()</span></code></pre></figure>
+
+<p>You can now live-edit the aforementioned JavaScript files as you read
+<code>man open</code>, and start diving deeper and deeper into your Android apps.</p>
+
+<h2 id="building-your-own-tools">Building your own tools</h2>
+
+<p>While the CLI tools like <em>frida</em>, <em>frida-trace</em>, etc., are definitely
+quite useful, there might be times when you’d like to build your own tools
+harnessing the powerful <a href="/docs/javascript-api/">Frida APIs</a>. For that we would
+recommend reading the chapters on <a href="/docs/functions">Functions</a> and
+<a href="/docs/messages">Messages</a>, and anywhere you see <code>frida.attach()</code> just
+substitute that with <code>frida.get_usb_device().attach()</code>.</p>
+
+          
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="section-nav">
+      <div class="left align-right">
+          
+            
+            
+            <a href="/docs/ios/" class="prev">Back</a>
+          
+      </div>
+      <div class="right align-left">
+          
+            
+            
+            <a href="/docs/examples/windows/" class="next">Next</a>
+          
+      </div>
+    </div>
+    <div class="clear"></div>
+    
+
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+
+  <footer>
+  <div class="grid">
+    <div class="unit whole align-right center-on-mobiles">
+      <div class="sponsored-by">
+        <h5>Sponsored by:</h5>
+        <a href="https://www.nowsecure.com">
+          <img src="/img/nowsecure-logo.png" alt="NowSecure">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+
+
+  <!-- Google Analytics (http://google.com/analytics) -->
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46880695-1']);
+    _gaq.push(['_setDomainName', 'http://www.frida.re']); // Multiple sub-domains
+    _gaq.push(['_setAllowLinker', true]); // Multiple TLDs
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,4303 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="generator" content="Jekyll v3.1.6">
+  <link type="application/atom+xml" rel="alternate" href="http://www.frida.re/feed.xml" title="Frida • A world-class dynamic instrumentation framework" />
+  <link rel="alternate" type="application/atom+xml" title="Recent commits to Frida’s master branch" href="https://github.com/frida/frida/commits/master.atom" />
+  <link rel="stylesheet" href="/css/screen.css" />
+  <link rel="icon" type="image/png" href="/favicon.ico" />
+  <!-- Begin Jekyll SEO tag v2.0.0 -->
+<title>JavaScript API - Frida • A world-class dynamic instrumentation framework</title>
+<meta property="og:title" content="JavaScript API" />
+<meta name="description" content="Inject JavaScript to explore native apps on Windows, macOS, Linux, iOS, Android, and QNX" />
+<meta property="og:description" content="Inject JavaScript to explore native apps on Windows, macOS, Linux, iOS, Android, and QNX" />
+<link rel="canonical" href="http://www.frida.re/docs/javascript-api/" />
+<meta property="og:url" content="http://www.frida.re/docs/javascript-api/" />
+<meta property="og:site_name" content="Frida • A world-class dynamic instrumentation framework" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-05-29T03:26:45+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@fridadotre" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "JavaScript API",
+    "datePublished": "2017-05-29T03:26:45+02:00",
+    "description": "Inject JavaScript to explore native apps on Windows, macOS, Linux, iOS, Android, and QNX",
+    "url": "http://www.frida.re/docs/javascript-api/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+  <script src="/js/modernizr-2.5.3.min.js"></script>
+</head>
+
+
+<body class="wrap">
+  <header>
+  <nav class="mobile-nav show-on-mobiles">
+    <ul>
+  <li class="">
+    <a href="/">Overview</a>
+  </li>
+  <li class="current">
+    <a href="/docs/home/">Docs</span></a>
+  </li>
+  <li class="">
+    <a href="/news/">News</a>
+  </li>
+  <li class="">
+    <a href="https://github.com/frida/frida">Code</a>
+  </li>
+  <li class="">
+    <a href="/contact/">Contact</a>
+  </li>
+</ul>
+
+  </nav>
+  <div class="grid">
+    <div class="logotype unit one-third center-on-mobiles">
+      <a href="/">
+        <span>FЯIDA</span>
+        <img src="/img/logotype.svg" width="205" height="39" alt="">
+      </a>
+    </div>
+    <nav class="main-nav unit two-thirds hide-on-mobiles">
+      <ul>
+  <li class="">
+    <a href="/">Overview</a>
+  </li>
+  <li class="current">
+    <a href="/docs/home/">Docs</span></a>
+  </li>
+  <li class="">
+    <a href="/news/">News</a>
+  </li>
+  <li class="">
+    <a href="https://github.com/frida/frida">Code</a>
+  </li>
+  <li class="">
+    <a href="/contact/">Contact</a>
+  </li>
+</ul>
+
+    </nav>
+  </div>
+</header>
+
+
+    <section class="docs">
+    <div class="grid">
+
+      <div class="docs-nav-mobile unit whole show-on-mobiles">
+  <select onchange="if (this.value) window.location.href=this.value">
+    <option value="">Navigate the docs…</option>
+    
+    <optgroup label="Getting Started">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/home/">Welcome</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/quickstart/">Quick-start guide</option>
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/installation/">Installation</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/usage/">Basic Usage</option>
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/modes/">Modes of Operation</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/hacking/">Hacking</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/presentations/">Presentations</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Tutorials">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/functions/">Functions</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/messages/">Messages</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/ios/">iOS</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+      <option value="/docs/android/">Android</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Examples">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/examples/windows/">Windows</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/examples/macos/">macOS</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/examples/linux/">Linux</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/examples/ios/">iOS</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/examples/android/">Android</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/examples/javascript/">JavaScript</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Tools">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/frida-cli/">Frida CLI</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/frida-ps/">frida-ps</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/frida-trace/">frida-trace</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/frida-discover/">frida-discover</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="API Reference">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/javascript-api/">JavaScript API</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+      <option value="/docs/c-api/">C API</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/swift-api/">Swift API</option>
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Miscellaneous">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/troubleshooting/">Troubleshooting</option>
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+      <option value="/docs/building/">Building</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Meta">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/contributing/">Contributing</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/gsoc-ideas-2015/">GSoC Ideas 2015</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/history/">History</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+  </select>
+</div>
+
+      <div class="docs-nav-desktop unit one-quarter hide-on-mobiles">
+  <aside>
+    
+    <h4>Getting Started</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/home/">Welcome</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/quickstart/">Quick-start guide</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/installation/">Installation</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/usage/">Basic Usage</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/modes/">Modes of Operation</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/hacking/">Hacking</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/presentations/">Presentations</a></li>
+
+
+</ul>
+
+    
+    <h4>Tutorials</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/functions/">Functions</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/messages/">Messages</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/ios/">iOS</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/android/">Android</a></li>
+
+
+</ul>
+
+    
+    <h4>Examples</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/examples/windows/">Windows</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/examples/macos/">macOS</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/examples/linux/">Linux</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/examples/ios/">iOS</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/examples/android/">Android</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/examples/javascript/">JavaScript</a></li>
+
+
+</ul>
+
+    
+    <h4>Tools</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/frida-cli/">Frida CLI</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/frida-ps/">frida-ps</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/frida-trace/">frida-trace</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/frida-discover/">frida-discover</a></li>
+
+
+</ul>
+
+    
+    <h4>API Reference</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+  <li class="current"><a href="/docs/javascript-api/">JavaScript API</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/c-api/">C API</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/swift-api/">Swift API</a></li>
+
+
+</ul>
+
+    
+    <h4>Miscellaneous</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/troubleshooting/">Troubleshooting</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/building/">Building</a></li>
+
+
+</ul>
+
+    
+    <h4>Meta</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/contributing/">Contributing</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/gsoc-ideas-2015/">GSoC Ideas 2015</a></li>
+
+
+  
+
+  
+
+  
+  <li class=""><a href="/docs/history/">History</a></li>
+
+
+</ul>
+
+    
+  </aside>
+</div>
+
+
+      <div class="docs-articles unit three-quarters">
+        <article>
+          <div class="improve right hide-on-mobiles">
+            <a href="https://github.com/frida/frida-website/edit/master/_docs/javascript-api.md"><i class="fa fa-pencil"></i>Improve this page</a>
+          </div>
+          <h1>JavaScript API</h1>
+          <h2 id="table-of-contents">Table of contents</h2>
+<ol>
+  <li><a href="#global">Global</a></li>
+  <li><a href="#console">console</a></li>
+  <li><a href="#rpc">rpc</a></li>
+  <li><a href="#frida">Frida</a></li>
+  <li><a href="#process">Process</a></li>
+  <li><a href="#module">Module</a></li>
+  <li><a href="#memory">Memory</a></li>
+  <li><a href="#memoryaccessmonitor">MemoryAccessMonitor</a></li>
+  <li><a href="#thread">Thread</a></li>
+  <li><a href="#int64">Int64</a></li>
+  <li><a href="#uint64">UInt64</a></li>
+  <li><a href="#nativepointer">NativePointer</a></li>
+  <li><a href="#nativefunction">NativeFunction</a></li>
+  <li><a href="#nativecallback">NativeCallback</a></li>
+  <li><a href="#socket">Socket</a></li>
+  <li><a href="#stream">Stream</a></li>
+  <li><a href="#file">File</a></li>
+  <li><a href="#interceptor">Interceptor</a></li>
+  <li><a href="#stalker">Stalker</a></li>
+  <li><a href="#apiresolver">ApiResolver</a></li>
+  <li><a href="#debugsymbol">DebugSymbol</a></li>
+  <li><a href="#instruction">Instruction</a></li>
+  <li><a href="#objc">ObjC</a></li>
+  <li><a href="#java">Java</a></li>
+  <li><a href="#weakref">WeakRef</a></li>
+</ol>
+
+<h2 id="global">Global</h2>
+
+<ul>
+  <li>
+    <p><code>hexdump(target[, options])</code>: generate a hexdump from the provided
+<em>ArrayBuffer</em> or <em>NativePointer</em> <code>target</code>, optionally with <code>options</code> for
+customizing the output.</p>
+
+    <p>For example:</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">libc</span> <span class="o">=</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">findBaseAddress</span><span class="p">(</span><span class="s1">&#39;libc.so&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">buf</span> <span class="o">=</span> <span class="nx">Memory</span><span class="p">.</span><span class="nx">readByteArray</span><span class="p">(</span><span class="nx">libc</span><span class="p">,</span> <span class="mi">64</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hexdump</span><span class="p">(</span><span class="nx">buf</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">offset</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nx">length</span><span class="o">:</span> <span class="mi">64</span><span class="p">,</span>
+  <span class="nx">header</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">ansi</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}));</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">           <span class="m">0</span>  <span class="m">1</span>  <span class="m">2</span>  <span class="m">3</span>  <span class="m">4</span>  <span class="m">5</span>  <span class="m">6</span>  <span class="m">7</span>  <span class="m">8</span>  <span class="m">9</span>  A  B  C  D  E  F  0123456789ABCDEF
+<span class="m">00000000</span>  7f <span class="m">45</span> 4c <span class="m">46</span> <span class="m">01</span> <span class="m">01</span> <span class="m">01</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>  .ELF............
+<span class="m">00000010</span>  <span class="m">03</span> <span class="m">00</span> <span class="m">28</span> <span class="m">00</span> <span class="m">01</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">34</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>  ..<span class="o">(</span>.........4...
+<span class="m">00000020</span>  <span class="m">34</span> a8 <span class="m">04</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">05</span> <span class="m">34</span> <span class="m">00</span> <span class="m">20</span> <span class="m">00</span> <span class="m">08</span> <span class="m">00</span> <span class="m">28</span> <span class="m">00</span>  4.......4. ...<span class="o">(</span>.
+<span class="m">00000030</span>  1e <span class="m">00</span> 1d <span class="m">00</span> <span class="m">06</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">34</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">34</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>  ........4...4...</code></pre></figure>
+
+<ul>
+  <li>
+    <p><code>int64(v)</code>: short-hand for <code>new Int64(v)</code></p>
+  </li>
+  <li>
+    <p><code>uint64(v)</code>: short-hand for <code>new UInt64(v)</code></p>
+  </li>
+  <li>
+    <p><code>ptr(s)</code>: short-hand for <code>new NativePointer(s)</code></p>
+  </li>
+  <li>
+    <p><code>NULL</code>: short-hand for <code>ptr("0")</code></p>
+  </li>
+  <li>
+    <p><code>recv([type, ]callback)</code>: request <code>callback</code> to be called on the next
+message received from your Frida-based application. Optionally <code>type</code> may
+be specified to only receive a message where the <code>type</code> field is set to
+<code>type</code>.</p>
+
+    <p>This will only give you one message, so you need to call <code>recv()</code> again
+to receive the next one.</p>
+  </li>
+  <li>
+    <p><code>send(message[, data])</code>: send the JavaScript object <code>message</code> to your
+Frida-based application (it must be serializable to JSON). If you also have
+some raw binary data that you’d like to send along with it, e.g. you dumped
+some memory using <code>Memory#readByteArray</code>, then you may pass this through the
+optional <code>data</code> argument. This requires it to either be an ArrayBuffer or an
+array of integers between 0 and 255.</p>
+  </li>
+</ul>
+
+<div class="note">
+  <h5>Performance considerations</h5>
+  <p>
+    While <i>send()</i> is asynchronous, the total overhead of sending a single
+    message is not optimized for high frequencies, so that means Frida leaves
+    it up to you to batch multiple values into a single <i>send()</i>-call,
+    based on whether low delay or high throughput is desired.
+  </p>
+</div>
+
+<ul>
+  <li>
+    <p><code>setTimeout(fn, delay)</code>: call <code>fn</code> after <code>delay</code> milliseconds. Returns an
+id that can be passed to <code>clearTimeout</code> to cancel it.</p>
+  </li>
+  <li>
+    <p><code>clearTimeout(id)</code>: cancel id returned by call to <code>setTimeout</code></p>
+  </li>
+  <li>
+    <p><code>setInterval(fn, delay)</code>: call <code>fn</code> every <code>delay</code> milliseconds. Returns an
+id that can be passed to <code>clearInterval</code> to cancel it.</p>
+  </li>
+  <li>
+    <p><code>clearInterval(id)</code>: cancel id returned by call to <code>setInterval</code></p>
+  </li>
+</ul>
+
+<h2 id="console">console</h2>
+
+<ul>
+  <li>
+    <p><code>console.log(line)</code>, <code>console.warn(line)</code>, <code>console.error(line)</code>:
+write <code>line</code> to the console of your Frida-based application. The exact
+behavior depends on where <a href="https://github.com/frida/frida-core">frida-core</a>
+is integrated.
+For example, this output goes to <em>stdout</em> or <em>stderr</em> when using Frida
+through <a href="https://github.com/frida/frida-python">frida-python</a>,
+<a href="https://doc.qt.io/qt-5/qdebug.html">qDebug</a> when using
+<a href="https://github.com/frida/frida-qml">frida-qml</a>, etc.</p>
+
+    <p>Arguments that are ArrayBuffer objects will be substituted by the result of
+<code>hexdump()</code> with default options.</p>
+  </li>
+</ul>
+
+<h2 id="rpc">rpc</h2>
+
+<ul>
+  <li><code>rpc.exports</code>: empty object that you can either replace or insert into to
+expose an RPC-style API to your application. The key specifies the method
+name and the value is your exported function. This function may either
+return a plain value for returning that to the caller immediately, or a
+Promise for returning asynchronously.</li>
+</ul>
+
+<blockquote>
+  <p>For example:</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="nx">rpc</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">add</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">sub</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">resolve</span><span class="p">(</span><span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">);</span>
+            <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<blockquote>
+  <p>From an application using the Node.js bindings this API would be consumed
+  like this:</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">co</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;co&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">frida</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;frida&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">load</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;frida-load&#39;</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">session</span><span class="p">,</span> <span class="nx">script</span><span class="p">;</span>
+<span class="nx">co</span><span class="p">(</span><span class="kd">function</span> <span class="o">*</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">source</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">load</span><span class="p">(</span><span class="nx">require</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s1">&#39;./agent.js&#39;</span><span class="p">));</span>
+    <span class="nx">session</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">frida</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="s2">&quot;iTunes&quot;</span><span class="p">);</span>
+    <span class="nx">script</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">session</span><span class="p">.</span><span class="nx">createScript</span><span class="p">(</span><span class="nx">source</span><span class="p">);</span>
+    <span class="nx">script</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="nx">onMessage</span><span class="p">);</span>
+    <span class="k">yield</span> <span class="nx">script</span><span class="p">.</span><span class="nx">load</span><span class="p">();</span>
+    <span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">script</span><span class="p">.</span><span class="nx">getExports</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">yield</span> <span class="nx">api</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">yield</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sub</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">onError</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;send&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;error&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<blockquote>
+  <p>The Python version would be very similar:</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">codecs</span>
+<span class="kn">import</span> <span class="nn">frida</span>
+
+<span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">message</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;send&#39;</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s">&#39;payload&#39;</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">message</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;error&#39;</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s">&#39;stack&#39;</span><span class="p">])</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">frida</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="s">&#39;iTunes&#39;</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;./agent.js&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="s">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">script</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">create_script</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="n">script</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s">&#39;message&#39;</span><span class="p">,</span> <span class="n">on_message</span><span class="p">)</span>
+<span class="n">script</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">script</span><span class="o">.</span><span class="n">exports</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">script</span><span class="o">.</span><span class="n">exports</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">session</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span></code></pre></figure>
+
+<p>In the example above we used <code>script.on('message', on_message)</code> to monitor for any messages from the injected process, JavaScript side.  There are other notifications that you can watch for as well on both the <code>script</code> and <code>session</code>.  If you want to be notified when the target process exits, use <code>session.on('detached', your_function)</code>.</p>
+
+<h2 id="frida">Frida</h2>
+
+<ul>
+  <li><code>Frida.version</code>: property containing the current Frida version</li>
+</ul>
+
+<h2 id="process">Process</h2>
+
+<ul>
+  <li>
+    <p><code>Process.arch</code>: property containing the string <code>ia32</code>, <code>x64</code>, <code>arm</code>
+or <code>arm64</code></p>
+  </li>
+  <li>
+    <p><code>Process.platform</code>: property containing the string <code>windows</code>,
+<code>darwin</code>, <code>linux</code> or <code>qnx</code></p>
+  </li>
+  <li>
+    <p><code>Process.pageSize</code>: property containing the size of a virtual memory page
+(in bytes) as a JavaScript number. This is used to make your scripts more
+portable.</p>
+  </li>
+  <li>
+    <p><code>Process.pointerSize</code>: property containing the size of a pointer
+(in bytes) as a JavaScript number. This is used to make your scripts more
+portable.</p>
+  </li>
+  <li>
+    <p><code>Process.isDebuggerAttached()</code>: returns a boolean indicating whether a
+debugger is currently attached</p>
+  </li>
+  <li>
+    <p><code>Process.getCurrentThreadId()</code>: get this thread’s OS-specific id as a
+JavaScript number</p>
+  </li>
+  <li>
+    <p><code>Process.enumerateThreads(callbacks)</code>: enumerate all threads,
+where <code>callbacks</code> is an object specifying:</p>
+
+    <ul>
+      <li><code>onMatch: function (thread)</code>: called with <code>thread</code> object containing:
+        <ul>
+          <li><code>id</code>: OS-specific id</li>
+          <li><code>state</code>: string specifying either <code>running</code>, <code>stopped</code>, <code>waiting</code>,
+<code>uninterruptible</code> or <code>halted</code></li>
+          <li><code>context</code>: object with the keys <code>pc</code> and <code>sp</code>, which are
+NativePointer objects specifying EIP/RIP/PC and ESP/RSP/SP,
+respectively, for ia32/x64/arm. Other processor-specific keys
+are also available, e.g. <code>eax</code>, <code>rax</code>, <code>r0</code>, <code>x0</code>, etc.</li>
+        </ul>
+
+        <p>This function may return the string <code>stop</code> to cancel the enumeration
+early.</p>
+      </li>
+      <li><code>onComplete: function ()</code>: called when all threads have been enumerated</li>
+    </ul>
+  </li>
+  <li>
+    <p><code>Process.enumerateThreadsSync()</code>: synchronous version of
+<code>enumerateThreads()</code> that returns the threads in an array.</p>
+  </li>
+  <li>
+    <p><code>Process.findModuleByAddress(address)</code>,
+<code>Process.getModuleByAddress(address)</code>,
+<code>Process.findModuleByName(name)</code>,
+<code>Process.getModuleByName(name)</code>:
+return an object with details about the module whose <em>address</em> or <em>name</em>
+matches the one specified. In the event that no such module could be found,
+the <em>find</em>-prefixed functions return <em>null</em> whilst the <em>get</em>-prefixed
+functions throw an exception.  See <code>Process.enumerateModules()</code> for
+details about which fields are included.</p>
+  </li>
+  <li>
+    <p><code>Process.enumerateModules(callbacks)</code>: enumerate modules loaded right now,
+where <code>callbacks</code> is an object specifying:</p>
+
+    <ul>
+      <li><code>onMatch: function (module)</code>: called with <code>module</code> object containing:
+        <ul>
+          <li><code>name</code>: canonical module name as a string</li>
+          <li><code>base</code>: base address as a <code>NativePointer</code></li>
+          <li><code>size</code>: size in bytes</li>
+          <li><code>path</code>: full filesystem path as a string</li>
+        </ul>
+
+        <p>This function may return the string <code>stop</code> to cancel the enumeration
+early.</p>
+      </li>
+      <li><code>onComplete: function ()</code>: called when all modules have been enumerated</li>
+    </ul>
+  </li>
+  <li>
+    <p><code>Process.enumerateModulesSync()</code>: synchronous version of
+<code>enumerateModules()</code> that returns the modules in an array.</p>
+  </li>
+  <li>
+    <p><code>Process.findRangeByAddress(address)</code>, <code>getRangeByAddress(address)</code>:
+return an object with details about the range containing <em>address</em>. In the
+event that no such range could be found, <em>findRangeByAddress()</em> returns
+<em>null</em> whilst <em>getRangeByAddress()</em> throws an exception.  See
+<code>Process.enumerateRanges()</code> for details about which fields are included.</p>
+  </li>
+  <li>
+    <p><code>Process.enumerateRanges(protection|specifier, callbacks)</code>: enumerate memory
+ranges satisfying <code>protection</code> given as a string of the form: <code>rwx</code>, where
+<code>rw-</code> means “must be at least readable and writable”. Alternatively you may
+provide a <code>specifier</code> object with a <code>protection</code> key whose value is as
+aforementioned, and a <code>coalesce</code> key set to <code>true</code> if you’d like neighboring
+ranges with the same protection to be coalesced (the default is <code>false</code>;
+i.e. keeping the ranges separate). <code>callbacks</code> is an object specifying:</p>
+
+    <ul>
+      <li><code>onMatch: function (range)</code>: called with <code>range</code> object containing:
+        <ul>
+          <li><code>base</code>: base address as a <code>NativePointer</code></li>
+          <li><code>size</code>: size in bytes</li>
+          <li><code>protection</code>: protection string (see above)</li>
+          <li>
+            <p><code>file</code>: (when available) file mapping details as an object
+containing:</p>
+
+            <ul>
+              <li><code>path</code>: full filesystem path as a string</li>
+              <li><code>offset</code>: offset in bytes</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p>This function may return the string <code>stop</code> to cancel the enumeration
+early.</p>
+      </li>
+      <li><code>onComplete: function ()</code>: called when all memory ranges have been
+enumerated</li>
+    </ul>
+  </li>
+  <li>
+    <p><code>Process.enumerateRangesSync(protection|specifier)</code>: synchronous version of
+<code>enumerateRanges()</code> that returns the ranges in an array.</p>
+  </li>
+  <li>
+    <p><code>Process.enumerateMallocRanges(callbacks)</code>: just like <code>enumerateRanges()</code>,
+but for individual memory allocations known to the system heap.</p>
+  </li>
+  <li>
+    <p><code>Process.enumerateMallocRangesSync(protection)</code>: synchronous version of
+<code>enumerateMallocRanges()</code> that returns the ranges in an array.</p>
+  </li>
+</ul>
+
+<h2 id="module">Module</h2>
+
+<ul>
+  <li>
+    <p><code>Module.enumerateImports(name, callbacks)</code>: enumerate imports of module with
+the <code>name</code> as seen in <code>Process#enumerateModules</code>. <code>callbacks</code> is an object
+specifying:</p>
+
+    <ul>
+      <li><code>onMatch: function (imp)</code>: called with <code>imp</code> object containing:
+        <ul>
+          <li><code>type</code>: string specifying either <code>function</code> or <code>variable</code></li>
+          <li><code>name</code>: import name as a string</li>
+          <li><code>module</code>: module name as a string</li>
+          <li><code>address</code>: absolute address as a <code>NativePointer</code></li>
+        </ul>
+
+        <p>Only the <code>name</code> field is guaranteed to be present for all imports. The
+platform-specific backend will do its best to resolve the other fields
+even beyond what the native metadata provides, but there is no guarantee
+that it will succeed.  This function may return the string <code>stop</code> to
+cancel the enumeration early.</p>
+      </li>
+      <li><code>onComplete: function ()</code>: called when all imports have been
+enumerated</li>
+    </ul>
+  </li>
+  <li>
+    <p><code>Module.enumerateImportsSync(name)</code>: synchronous version of
+<code>enumerateImports()</code> that returns the imports in an array.</p>
+  </li>
+  <li>
+    <p><code>Module.enumerateExports(name, callbacks)</code>: enumerate exports of module with
+the <code>name</code> as seen in <code>Process#enumerateModules</code>. <code>callbacks</code> is an object
+specifying:</p>
+
+    <ul>
+      <li><code>onMatch: function (exp)</code>: called with <code>exp</code> object containing:
+        <ul>
+          <li><code>type</code>: string specifying either <code>function</code> or <code>variable</code></li>
+          <li><code>name</code>: export name as a string</li>
+          <li><code>address</code>: absolute address as a <code>NativePointer</code></li>
+        </ul>
+
+        <p>This function may return the string <code>stop</code> to cancel the enumeration
+early.</p>
+      </li>
+      <li><code>onComplete: function ()</code>: called when all exports have been
+enumerated</li>
+    </ul>
+  </li>
+  <li>
+    <p><code>Module.enumerateExportsSync(name)</code>: synchronous version of
+<code>enumerateExports()</code> that returns the exports in an array.</p>
+  </li>
+  <li>
+    <p><code>Module.enumerateRanges(name, protection, callbacks)</code>: just like
+<code>Process#enumerateRanges</code>, except it’s scoped to the specified module
+<code>name</code>.</p>
+  </li>
+  <li>
+    <p><code>Module.enumerateRangesSync(name, protection)</code>: synchronous version of
+<code>enumerateRanges()</code> that returns the ranges in an array.</p>
+  </li>
+  <li>
+    <p><code>Module.findBaseAddress(name)</code>: returns the base address of the <code>name</code>
+module, or <code>null</code> if the module isn’t loaded</p>
+  </li>
+  <li>
+    <p><code>Module.findExportByName(module|null, exp)</code>: returns the absolute address of
+the export named <code>exp</code> in <code>module</code>. If the module isn’t known you may pass
+<code>null</code> instead of its name, but this can be a costly search and should be
+avoided.</p>
+  </li>
+</ul>
+
+<h2 id="memory">Memory</h2>
+
+<ul>
+  <li>
+    <p><code>Memory.scan(address, size, pattern, callbacks)</code>: scan memory for
+occurences of <code>pattern</code> in the memory range given by <code>address</code> and <code>size</code>.</p>
+
+    <ul>
+      <li>
+        <p><code>pattern</code> must be of the form “13 37 ?? ff” to match 0x13 followed by
+0x37 followed by any byte followed by 0xff</p>
+      </li>
+      <li>
+        <p><code>callbacks</code> is an object with:</p>
+
+        <ul>
+          <li>
+            <p><code>onMatch: function (address, size)</code>: called with <code>address</code>
+containing the address of the occurence as a <code>NativePointer</code> and
+<code>size</code> specifying the size as a JavaScript number.</p>
+
+            <p>This function may return the string <code>stop</code> to cancel the memory
+scanning early.</p>
+          </li>
+          <li>
+            <p><code>onError: function (reason)</code>: called with <code>reason</code> when there was a
+memory access error while scanning</p>
+          </li>
+          <li>
+            <p><code>onComplete: function ()</code>: called when the memory range has been
+fully scanned</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><code>Memory.scanSync(address, size, pattern)</code>: synchronous version of <code>scan()</code>
+that returns the matches in an array.</p>
+  </li>
+  <li>
+    <p><code>Memory.alloc(size)</code>: allocate <code>size</code> bytes of memory on the heap. The
+returned object is a <code>NativePointer</code> and the heap memory will be released
+when all JavaScript handles to it are gone. This means you need to keep
+a reference to it while the pointer is being used by code outside the
+JavaScript runtime.</p>
+  </li>
+  <li>
+    <p><code>Memory.copy(dst, src, n)</code>: just like memcpy.</p>
+  </li>
+  <li>
+    <p><code>Memory.dup(address, size)</code>: short-hand for <code>Memory.alloc()</code> followed by
+<code>Memory.copy()</code>.</p>
+  </li>
+  <li>
+    <p><code>Memory.protect(address, size, protection)</code>: update protection on a region
+of memory, where <code>protection</code> is a string of the same format as
+<code>Process.enumerateRanges()</code>.</p>
+
+    <p>For example:</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">Memory</span><span class="p">.</span><span class="nx">protect</span><span class="p">(</span><span class="nx">ptr</span><span class="p">(</span><span class="s2">&quot;0x1234&quot;</span><span class="p">),</span> <span class="mi">4096</span><span class="p">,</span> <span class="s1">&#39;rw-&#39;</span><span class="p">);</span></code></pre></figure>
+
+<ul>
+  <li>
+    <p><code>Memory.readPointer(address)</code>: read a pointer from <code>address</code> and return
+it as a <code>NativePointer</code>.</p>
+
+    <p>A JavaScript exception will be thrown if <code>address</code> isn’t readable.</p>
+  </li>
+  <li>
+    <p><code>Memory.writePointer(address, ptr)</code>: write <code>ptr</code> to <code>address</code>.</p>
+
+    <p>A JavaScript exception will be thrown if <code>address</code> isn’t writable.</p>
+  </li>
+  <li>
+    <p><code>Memory.readS8(address)</code>, <code>Memory.readU8(address)</code>,
+<code>Memory.readS16(address)</code>, <code>Memory.readU16(address)</code>,
+<code>Memory.readS32(address)</code>, <code>Memory.readU32(address)</code>,
+<code>Memory.readShort(address)</code>, <code>Memory.readUShort(address)</code>,
+<code>Memory.readInt(address)</code>, <code>Memory.readUInt(address)</code>,
+<code>Memory.readFloat(address)</code>, <code>Memory.readDouble(address)</code>:
+read a signed or unsigned 8/16/32/etc. or float/double value from
+<code>address</code> and return it as a JavaScript number.</p>
+
+    <p>A JavaScript exception will be thrown if <code>address</code> isn’t readable.</p>
+  </li>
+  <li>
+    <p><code>Memory.writeS8(address, value)</code>, <code>Memory.writeU8(address, value)</code>,
+<code>Memory.writeS16(address, value)</code>, <code>Memory.writeU16(address, value)</code>,
+<code>Memory.writeS32(address, value)</code>, <code>Memory.writeU32(address, value)</code>,
+<code>Memory.writeShort(address, value)</code>, <code>Memory.writeUShort(address, value)</code>,
+<code>Memory.writeInt(address, value)</code>, <code>Memory.writeUInt(address, value)</code>,
+<code>Memory.writeFloat(address, value)</code>, <code>Memory.writeDouble(address, value)</code>:
+write the JavaScript number <code>value</code> to the signed or unsigned
+8/16/32/etc. or float/double value at <code>address</code>.</p>
+
+    <p>A JavaScript exception will be thrown if <code>address</code> isn’t writable.</p>
+  </li>
+  <li>
+    <p><code>Memory.readS64(address)</code>, <code>Memory.readU64(address)</code>,
+<code>Memory.readLong(address)</code>, <code>Memory.readULong(address):
+read a signed or unsigned 64-bit, or long-sized, value from </code>address` and
+return it as an Int64/UInt64 object.</p>
+
+    <p>A JavaScript exception will be thrown if <code>address</code> isn’t readable.</p>
+  </li>
+  <li>
+    <p><code>Memory.writeS64(address, value)</code>, <code>Memory.writeU64(address, value)</code>,
+<code>Memory.writeLong(address, value)</code>, <code>Memory.writeULong(address, value)</code>:
+write the Int64/UInt64 <code>value</code> to the signed or unsigned 64-bit, or
+long-sized, value at <code>address</code>.</p>
+
+    <p>A JavaScript exception will be thrown if <code>address</code> isn’t writable.</p>
+  </li>
+  <li>
+    <p><code>Memory.readByteArray(address, length)</code>: read <code>length</code> bytes from <code>address</code>
+and return it as an ArrayBuffer. This buffer may be efficiently transferred
+to your Frida-based application by passing it as the second argument to
+<code>send()</code>.</p>
+
+    <p>A JavaScript exception will be thrown if any of the <code>length</code> bytes read from
+<code>address</code> isn’t readable.</p>
+  </li>
+  <li>
+    <p><code>Memory.writeByteArray(address, bytes)</code>: write <code>bytes</code> to <code>address</code>, where
+the former is either an ArrayBuffer, typically returned from
+<code>Memory.readByteArray()</code>, or an array of integers between 0 and 255. For
+example: <code>[ 0x13, 0x37, 0x42 ]</code>.</p>
+
+    <p>A JavaScript exception will be thrown if any of the bytes written to
+<code>address</code> isn’t writable.</p>
+  </li>
+  <li>
+    <p><code>Memory.readCString(address[, size = -1])</code>,
+<code>Memory.readUtf8String(address[, size = -1])</code>,
+<code>Memory.readUtf16String(address[, length = -1])</code>,
+<code>Memory.readAnsiString(address[, size = -1])</code>:
+read the bytes at <code>address</code> as an ASCII, UTF-8, UTF-16 or ANSI string.
+Supply the optional <code>size</code> argument if you know the size of the string
+in bytes, or omit it or specify -1 if the string is NUL-terminated.
+Likewise you may supply the optional <code>length</code> argument if you know the
+length of the string in characters.</p>
+
+    <p>A JavaScript exception will be thrown if any of the <code>size</code> / <code>length</code> bytes
+read from <code>address</code> isn’t readable.</p>
+
+    <p>Note that <code>readAnsiString()</code> is only available (and relevant) on Windows.</p>
+  </li>
+  <li>
+    <p><code>Memory.writeUtf8String(address, str)</code>,
+<code>Memory.writeUtf16String(address, str)</code>,
+<code>Memory.writeAnsiString(address, str)</code>:
+encode and write the JavaScript string to <code>address</code> (with NUL-terminator).</p>
+
+    <p>A JavaScript exception will be thrown if any of the bytes written to
+<code>address</code> isn’t writable.</p>
+
+    <p>Note that <code>writeAnsiString()</code> is only available (and relevant) on Windows.</p>
+  </li>
+  <li>
+    <p><code>Memory.allocUtf8String(str)</code>,
+<code>Memory.allocUtf16String(str)</code>,
+<code>Memory.allocAnsiString(str)</code>:
+allocate, encode and write out <code>str</code> as a UTF-8/UTF-16/ANSI string on the
+heap. The returned object is a <code>NativePointer</code>. See <code>Memory#alloc</code> for
+details about its lifetime.</p>
+  </li>
+</ul>
+
+<h2 id="memoryaccessmonitor">MemoryAccessMonitor</h2>
+
+<div class="note info">
+  <h5>MemoryAccessMonitor is only available on Windows for now</h5>
+  <p>
+    We would love to support this on the other platforms too, so if you find
+    this useful and would like to help out, please get in touch.
+  </p>
+</div>
+
+<ul>
+  <li>
+    <p><code>MemoryAccessMonitor.enable(ranges, callbacks)</code>: monitor one or more memory
+ranges for access, and notify on the first access of each contained memory
+page. <code>ranges</code> is either a single range object or an array of such objects,
+each of which contains:</p>
+
+    <ul>
+      <li><code>base</code>: base address as a <code>NativePointer</code></li>
+      <li><code>size</code>: size in bytes</li>
+    </ul>
+
+    <p><code>callbacks</code> is an object specifying:</p>
+
+    <ul>
+      <li><code>onAccess: function (details)</code>: called synchronously with <code>details</code>
+object containing:
+        <ul>
+          <li><code>operation</code>: the kind of operation that triggered the access, as a
+string specifying either <code>read</code>, <code>write</code> or <code>execute</code></li>
+          <li><code>from</code>: address of instruction performing the access as a
+<code>NativePointer</code></li>
+          <li><code>address</code>: address being accessed as a <code>NativePointer</code></li>
+          <li><code>rangeIndex</code>: index of the accessed range in the ranges provided to
+<code>MemoryAccessMonitor.enable()</code></li>
+          <li><code>pageIndex</code>: index of the accessed memory page inside the specified
+range</li>
+          <li><code>pagesCompleted</code>: overall number of pages which have been accessed
+so far (and are no longer being monitored)</li>
+          <li><code>pagesTotal</code>: overall number of pages that were initially monitored</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><code>MemoryAccessMonitor.disable()</code>: stop monitoring the remaining memory ranges
+passed to <code>MemoryAccessMonitor.enable()</code></p>
+  </li>
+</ul>
+
+<h2 id="thread">Thread</h2>
+
+<ul>
+  <li>
+    <p><code>Thread.backtrace([context, backtracer])</code>: generate a backtrace for the
+current thread, returned as an array of <code>NativePointer</code> objects.</p>
+
+    <p>If you call this from Interceptor’s <code>onEnter</code> or <code>onLeave</code> callbacks you
+should provide <code>this.context</code> for the optional <code>context</code> argument, as it
+will give you a more accurate backtrace. Omitting <code>context</code> means the
+backtrace will be generated from the current stack location, which may
+not give you a very good backtrace due to V8’s stack frames.
+The optional <code>backtracer</code> argument specifies the kind of backtracer to use,
+and must be either <code>Backtracer.FUZZY</code> or <code>Backtracer.ACCURATE</code>, where the
+latter is the default if not specified. The accurate kind of backtracers
+rely on debugger-friendly binaries or presence of debug information to do a
+good job, whereas the fuzzy backtracers perform forensics on the stack in
+order to guess the return addresses, which means you will get false
+positives, but it will work on any binary.</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">findExportByName</span><span class="p">(</span><span class="s2">&quot;libcommonCrypto.dylib&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CCCryptorCreate&quot;</span><span class="p">);</span>
+<span class="nx">Interceptor</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">onEnter</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;CCCryptorCreate called from:\n&quot;</span> <span class="o">+</span>
+            <span class="nx">Thread</span><span class="p">.</span><span class="nx">backtrace</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">context</span><span class="p">,</span> <span class="nx">Backtracer</span><span class="p">.</span><span class="nx">ACCURATE</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">DebugSymbol</span><span class="p">.</span><span class="nx">fromAddress</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;\n&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<ul>
+  <li><code>Thread.sleep(delay)</code>: suspend execution of the current thread for <code>delay</code>
+seconds specified as a JavaScript number. For example 0.05 to sleep for
+50 ms.</li>
+</ul>
+
+<h2 id="int64">Int64</h2>
+
+<ul>
+  <li>
+    <p><code>new Int64(v)</code>: create a new Int64 from <code>v</code>, which is either a JavaScript
+Number or a string containing a value in decimal, or hexadecimal if prefixed
+with “0x”. You may use the <code>int64(v)</code> short-hand for brevity.</p>
+  </li>
+  <li>
+    <p><code>add(rhs)</code>, <code>sub(rhs)</code>,
+<code>and(rhs)</code>, <code>or(rhs)</code>,
+<code>xor(rhs)</code>:
+make a new Int64 with this Int64 plus/minus/and/or/xor <code>rhs</code>, which may
+either be a JavaScript number or another Int64</p>
+  </li>
+  <li>
+    <p><code>shr(n)</code>, <code>shl(n)</code>:
+make a new Int64 with this Int64 shifted right/left by <code>n</code> bits</p>
+  </li>
+  <li>
+    <p><code>compare(rhs)</code>: returns an integer comparison result just like
+String#localeCompare()</p>
+  </li>
+  <li>
+    <p><code>toNumber()</code>: cast this Int64 to a JavaScript Number</p>
+  </li>
+  <li>
+    <p><code>toString([radix = 10])</code>: convert to a string of optional radix (defaults to
+10)</p>
+  </li>
+</ul>
+
+<h2 id="uint64">UInt64</h2>
+
+<ul>
+  <li>
+    <p><code>new UInt64(v)</code>: create a new UInt64 from <code>v</code>, which is either a JavaScript
+Number or a string containing a value in decimal, or hexadecimal if prefixed
+with “0x”. You may use the <code>uint64(v)</code> short-hand for brevity.</p>
+  </li>
+  <li>
+    <p><code>add(rhs)</code>, <code>sub(rhs)</code>,
+<code>and(rhs)</code>, <code>or(rhs)</code>,
+<code>xor(rhs)</code>:
+make a new UInt64 with this UInt64 plus/minus/and/or/xor <code>rhs</code>, which may
+either be a JavaScript number or another UInt64</p>
+  </li>
+  <li>
+    <p><code>shr(n)</code>, <code>shl(n)</code>:
+make a new UInt64 with this UInt64 shifted right/left by <code>n</code> bits</p>
+  </li>
+  <li>
+    <p><code>compare(rhs)</code>: returns an integer comparison result just like
+String#localeCompare()</p>
+  </li>
+  <li>
+    <p><code>toNumber()</code>: cast this UInt64 to a JavaScript Number</p>
+  </li>
+  <li>
+    <p><code>toString([radix = 10])</code>: convert to a string of optional radix (defaults to
+10)</p>
+  </li>
+</ul>
+
+<h2 id="nativepointer">NativePointer</h2>
+
+<ul>
+  <li>
+    <p><code>new NativePointer(s)</code>: create a new NativePointer from the string <code>s</code>
+containing a memory address in either decimal, or hexadecimal if prefixed
+with “0x”. You may use the <code>ptr(s)</code> short-hand for brevity.</p>
+  </li>
+  <li>
+    <p><code>isNull()</code>: returns a boolean allowing you to conveniently check if a
+pointer is NULL</p>
+  </li>
+  <li>
+    <p><code>add(rhs)</code>, <code>sub(rhs)</code>,
+<code>and(rhs)</code>, <code>or(rhs)</code>,
+<code>xor(rhs)</code>:
+make a new NativePointer with this NativePointer plus/minus/and/or/xor
+<code>rhs</code>, which may either be a JavaScript number or another NativePointer</p>
+  </li>
+  <li>
+    <p><code>shr(n)</code>, <code>shl(n)</code>:
+make a new NativePointer with this NativePointer shifted right/left by <code>n</code>
+bits</p>
+  </li>
+  <li>
+    <p><code>equals(rhs)</code>: returns a boolean indicating whether <code>rhs</code> is equal to
+this one; i.e. it has the same pointer value</p>
+  </li>
+  <li>
+    <p><code>compare(rhs)</code>: returns an integer comparison result just like
+String#localeCompare()</p>
+  </li>
+  <li>
+    <p><code>toInt32()</code>: cast this NativePointer to a signed 32-bit integer</p>
+  </li>
+  <li>
+    <p><code>toString([radix = 16])</code>: convert to a string of optional radix (defaults to
+16)</p>
+  </li>
+  <li>
+    <p><code>toMatchPattern()</code>: returns a string containing a <code>Memory.scan()</code>-compatible
+match pattern for this pointer’s raw value</p>
+  </li>
+</ul>
+
+<h2 id="nativefunction">NativeFunction</h2>
+
+<ul>
+  <li>
+    <p><code>new NativeFunction(address, returnType, argTypes[, abi])</code>: create a new
+NativeFunction to call the function at <code>address</code> (specified with a
+<code>NativePointer</code>), where <code>returnType</code> specifies the return type, and the
+<code>argTypes</code> array specifies the argument types. You may optionally also
+specify <code>abi</code> if not system default. For variadic functions, add a <code>'...'</code>
+entry to <code>argTypes</code> between the fixed arguments and the variadic ones.</p>
+
+    <h3 id="structs--classes-by-value">Structs &amp; Classes by Value</h3>
+
+    <p>As for structs or classes passed by value, instead of a string provide an
+array containing the struct’s field types following each other. You may nest
+these as deep as desired for representing structs inside structs. Note that
+the returned object is also a <code>NativePointer</code>, and can thus be passed to
+<code>Interceptor#attach</code>.</p>
+
+    <p>This must match the struct/class exactly, so if you have a struct with three
+ints, you must pass <code>['int', 'int', 'int']</code>.</p>
+
+    <p>For a class that has virtual methods, the first parameter will be a pointer
+to <a href="https://en.wikipedia.org/wiki/Virtual_method_table">the vtable</a>.</p>
+
+    <p>For C++ scenarios involving a return value that is larger than
+<code>Process.pointerSize</code>, a <code>NativePointer</code> to preallocated space must be passed
+in as the first parameter. (This scenario is common in WebKit, for example.)</p>
+
+    <p>Example:</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// LargeObject HandyClass::friendlyFunctionName();</span>
+<span class="kd">var</span> <span class="nx">friendlyFunctionName</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NativeFunction</span><span class="p">(</span><span class="nx">friendlyFunctionPtr</span><span class="p">,</span> <span class="s1">&#39;void&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;pointer&#39;</span><span class="p">,</span> <span class="s1">&#39;pointer&#39;</span><span class="p">]);</span>
+<span class="kd">var</span> <span class="nx">returnValue</span> <span class="o">=</span> <span class="nx">Memory</span><span class="p">.</span><span class="nx">alloc</span><span class="p">(</span><span class="nx">sizeOfLargeObject</span><span class="p">);</span>
+<span class="nx">friendlyFunctionName</span><span class="p">(</span><span class="nx">returnValue</span><span class="p">,</span> <span class="nx">thisPtr</span><span class="p">);</span></code></pre></figure>
+
+<pre><code>### Supported Types
+
+-   void
+-   pointer
+-   int
+-   uint
+-   long
+-   ulong
+-   char
+-   uchar
+-   float
+-   double
+-   int8
+-   uint8
+-   int16
+-   uint16
+-   int32
+-   uint32
+-   int64
+-   uint64
+
+### Supported ABIs
+
+-   default
+
+-   Windows 32-bit:
+    -   sysv
+    -   stdcall
+    -   thiscall
+    -   fastcall
+    -   mscdecl
+
+- Windows 64-bit:
+    -   win64
+
+- UNIX x86:
+    -   sysv
+    -   unix64
+
+- UNIX ARM:
+    -   sysv
+    -   vfp
+</code></pre>
+
+<h2 id="nativecallback">NativeCallback</h2>
+
+<ul>
+  <li><code>new NativeCallback(func, returnType, argTypes[, abi])</code>: create a new
+NativeCallback implemented by the JavaScript function <code>func</code>, where
+<code>returnType</code> specifies the return type, and the <code>argTypes</code> array specifies
+the argument types. You may also specify the abi if not system default.
+See <code>NativeFunction</code> for details about supported types and abis.
+Note that the returned object is also a <code>NativePointer</code>, and can thus be
+passed to <code>Interceptor#replace</code>.</li>
+</ul>
+
+<h2 id="socket">Socket</h2>
+
+<ul>
+  <li>
+    <p><code>Socket.type(handle)</code>: inspect the OS socket <code>handle</code> and return its type
+as a string which is either <code>tcp</code>, <code>udp</code>, <code>tcp6</code>, <code>udp6</code>, <code>unix:stream</code>,
+<code>unix:dgram</code>, or <code>null</code> if invalid or unknown.</p>
+  </li>
+  <li>
+    <p><code>Socket.localAddress(handle)</code>,
+<code>Socket.peerAddress(handle)</code>:
+inspect the OS socket <code>handle</code> and return its local or peer address, or
+<code>null</code> if invalid or unknown.</p>
+
+    <p>The object returned has the fields:</p>
+
+    <ul>
+      <li><code>ip</code>: (IP sockets) IP address as a string.</li>
+      <li><code>port</code>: (IP sockets) Port number as a JavaScript number.</li>
+      <li><code>path</code>: (UNIX sockets) UNIX path as a string.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="stream">Stream</h2>
+
+<ul>
+  <li>
+    <p><code>new UnixInputStream(fd[, options])</code>,
+<code>new UnixOutputStream(fd[, options])</code>,
+<code>new Win32InputStream(handle[, options])</code>,
+<code>new Win32OutputStream(handle[, options])</code>: create a new stream object
+from the file descriptor <code>fd</code> (UNIX) or file <em>HANDLE</em> <code>handle</code> (Windows).
+You may also supply an <code>options</code> object with <code>autoClose</code> set to <code>true</code> to
+make the stream close the underlying OS resource when the stream is
+released, either through <code>close()</code> or future garbage-collection.</p>
+
+    <p>All methods of the returned object are fully asynchronous and return a
+<em>Promise</em> object.</p>
+  </li>
+  <li>
+    <p><code>close()</code>: close the stream, releasing resources related to it. Once the
+stream is closed, all other operations will fail. Closing a stream multiple
+times is allowed and will not result in an error.</p>
+  </li>
+  <li>
+    <p><code>InputStream#read(size)</code>: read up to <code>size</code> bytes from the stream. The
+returned <em>Promise</em> receives an <em>ArrayBuffer</em> up to <code>size</code> bytes long. End of
+stream is signalled through an empty buffer.</p>
+  </li>
+  <li>
+    <p><code>InputStream#readAll(size)</code>: keep reading from the stream until exactly
+<code>size</code> bytes have been consumed. The returned <em>Promise</em> receives an
+<em>ArrayBuffer</em> that is exactly <code>size</code> bytes long. Premature error or end of
+stream results in the <em>Promise</em> getting rejected with an error, where the
+<code>Error</code> object has a <code>partialData</code> property containing the incomplete data.</p>
+  </li>
+  <li>
+    <p><code>OutputStream#write(data)</code>: try to write <code>data</code> to the stream. The <code>data</code>
+value is either an <em>ArrayBuffer</em> or an array of integers between 0 and 255.
+The returned <em>Promise</em> receives a <em>Number</em> specifying how many bytes of
+<code>data</code> were written to the stream.</p>
+  </li>
+  <li>
+    <p><code>OutputStream#writeAll(data)</code>: keep writing to the stream until all of
+<code>data</code> has been written. The <code>data</code> value is either an <em>ArrayBuffer</em> or an
+array of integers between 0 and 255. Premature error or end of stream
+results in an error, where the <code>Error</code> object has a <code>partialSize</code> property
+specifying how many bytes of <code>data</code> were written to the stream before the
+error occurred.</p>
+  </li>
+</ul>
+
+<h2 id="file">File</h2>
+
+<ul>
+  <li>
+    <p><code>new File(filePath, mode)</code>: open or create the file at <code>filePath</code> with
+the <code>mode</code> string specifying how it should be opened. For example <code>"wb"</code>
+to open the file for writing in binary mode (this is the same format as
+<code>fopen()</code> from the C standard library).</p>
+  </li>
+  <li>
+    <p><code>write(data)</code>: synchronously write <code>data</code> to the file, where <code>data</code> is
+either a string or a buffer as returned by <code>Memory#readByteArray</code></p>
+  </li>
+  <li>
+    <p><code>flush()</code>: flush any buffered data to the underlying file</p>
+  </li>
+  <li>
+    <p><code>close()</code>: close the file. You should call this function when you’re done
+with the file. Any remaining buffered data will automatically be flushed
+before closure.</p>
+  </li>
+</ul>
+
+<h2 id="interceptor">Interceptor</h2>
+
+<ul>
+  <li>
+    <p><code>Interceptor.attach(target, callbacks)</code>: intercept calls to function at
+<code>target</code>. This is a <code>NativePointer</code> specifying the address of the function
+you would like to intercept calls to. Note that on 32-bit ARM this address
+must have its least significant bit set to 0 for ARM functions, and 1 for
+Thumb functions. Frida takes care of this detail for you if you get the
+address from a Frida API (for example <code>Module.findExportByName()</code>).</p>
+
+    <p>The <code>callbacks</code> argument is an object containing one or more of:</p>
+
+    <ul>
+      <li>
+        <p><code>onEnter: function (args)</code>: callback function given one argument
+<code>args</code> that can be used to read or write arguments as an array of
+<code>NativePointer</code> objects.</p>
+      </li>
+      <li>
+        <p><code>onLeave: function (retval)</code>: callback function given one argument
+<code>retval</code> that is a <code>NativePointer</code>-derived object containing the raw
+return value.
+You may call <code>retval.replace(1337)</code> to replace the return value with
+the integer <code>1337</code>, or <code>retval.replace(ptr("0x1234"))</code> to replace with
+a pointer.
+Note that this object is recycled across <em>onLeave</em> calls, so do not
+store and use it outside your callback. Make a deep copy if you need
+to store the contained value, e.g.: <code>ptr(retval.toString())</code>.</p>
+      </li>
+    </ul>
+
+    <p>You may also intercept arbitrary instructions by passing a function instead
+of the <code>callbacks</code> object. This function has the same signature as
+<code>onEnter</code>, but the <code>args</code> argument passed to it will only give you sensible
+values if the intercepted instruction is at the beginning of a function or
+at a point where registers/stack have not yet deviated from that point.</p>
+
+    <p>Returns a listener object that you can call <code>detach()</code> on.</p>
+
+    <p>Note that these functions will be invoked with <code>this</code> bound to a
+per-invocation (thread-local) object where you can store arbitrary data,
+which is useful if you want to read an argument in <code>onEnter</code> and act on it
+in <code>onLeave</code>.</p>
+
+    <p>For example:</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">Interceptor</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">Module</span><span class="p">.</span><span class="nx">findExportByName</span><span class="p">(</span><span class="s2">&quot;libc.so&quot;</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">),</span> <span class="p">{</span>
+    <span class="nx">onEnter</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">fileDescriptor</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">toInt32</span><span class="p">();</span>
+    <span class="p">},</span>
+    <span class="nx">onLeave</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">retval</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">retval</span><span class="p">.</span><span class="nx">toInt32</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="cm">/* do something with this.fileDescriptor */</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<ul>
+  <li>
+    <p>Additionally, the object contains some useful properties:</p>
+
+    <ul>
+      <li>
+        <p><code>returnAddress</code>: return address as a NativePointer</p>
+      </li>
+      <li>
+        <p><code>context</code>: object with the keys <code>pc</code> and <code>sp</code>, which are
+NativePointer objects specifying EIP/RIP/PC and ESP/RSP/SP,
+respectively, for ia32/x64/arm. Other processor-specific keys
+are also available, e.g. <code>eax</code>, <code>rax</code>, <code>r0</code>, <code>x0</code>, etc.
+You may also update register values by assigning to these keys.</p>
+      </li>
+      <li>
+        <p><code>errno</code>: (UNIX) current errno value (you may replace it)</p>
+      </li>
+      <li>
+        <p><code>lastError</code>: (Windows) current OS error value (you may replace it)</p>
+      </li>
+      <li>
+        <p><code>threadId</code>: OS thread ID</p>
+      </li>
+      <li>
+        <p><code>depth</code>: call depth of relative to other invocations</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div class="note">
+  <h5>Performance considerations</h5>
+  <p>
+    The callbacks provided have a significant impact on performance. If you only
+    need to inspect arguments but do not care about the return value, or the
+    other way around, make sure you omit the callback that you don't need; i.e.
+    avoid putting your logic in <i>onEnter</i> and leaving <i>onLeave</i> in
+    there as an empty callback.
+  </p>
+  <p>
+    On an iPhone 5S the base overhead when providing just <i>onEnter</i> might be
+    something like 6 microseconds, and 11 microseconds with both <i>onEnter</i>
+    and <i>onLeave</i> provided.
+  </p>
+  <p>
+    Also be careful about intercepting calls to functions that are called a
+    bazillion times per second; while <i>send()</i> is asynchronous, the total
+    overhead of sending a single message is not optimized for high frequencies,
+    so that means Frida leaves it up to you to batch multiple values into a
+    single <i>send()</i>-call, based on whether low delay or high throughput
+    is desired.
+  </p>
+</div>
+
+<ul>
+  <li>
+    <p><code>Interceptor.detachAll()</code>: detach all previously attached callbacks.</p>
+  </li>
+  <li>
+    <p><code>Interceptor.replace(target, replacement)</code>: replace function at <code>target</code>
+with implementation at <code>replacement</code>. This is typically used if you want
+to fully or partially replace an existing function’s implementation. Use
+<code>NativeCallback</code> to implement a <code>replacement</code> in JavaScript. Note that
+<code>replacement</code> will be kept alive until <code>Interceptor#revert</code> is called.
+If you want to chain to the original implementation you can synchronously
+call <code>target</code> through a <code>NativeFunction</code> inside your implementation, which
+will bypass and go directly to the original implementation.</p>
+
+    <p>Here’s an example:</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">openPtr</span> <span class="o">=</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">findExportByName</span><span class="p">(</span><span class="s2">&quot;libc.so&quot;</span><span class="p">,</span> <span class="s2">&quot;open&quot;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">open</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NativeFunction</span><span class="p">(</span><span class="nx">openPtr</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;pointer&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">]);</span>
+<span class="nx">Interceptor</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">openPtr</span><span class="p">,</span> <span class="k">new</span> <span class="nx">NativeCallback</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">pathPtr</span><span class="p">,</span> <span class="nx">flags</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">Memory</span><span class="p">.</span><span class="nx">readUtf8String</span><span class="p">(</span><span class="nx">pathPtr</span><span class="p">);</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Opening &#39;&quot;</span> <span class="o">+</span> <span class="nx">path</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">fd</span> <span class="o">=</span> <span class="nx">open</span><span class="p">(</span><span class="nx">pathPtr</span><span class="p">,</span> <span class="nx">flags</span><span class="p">);</span>
+    <span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Got fd: &quot;</span> <span class="o">+</span> <span class="nx">fd</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">fd</span><span class="p">;</span>
+<span class="p">},</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;pointer&#39;</span><span class="p">,</span> <span class="s1">&#39;int&#39;</span><span class="p">]));</span></code></pre></figure>
+
+<ul>
+  <li><code>Interceptor.revert(target)</code>: revert function at <code>target</code> to the previous
+implementation.</li>
+</ul>
+
+<h2 id="stalker">Stalker</h2>
+
+<ul>
+  <li>
+    <p><code>Stalker.follow([threadId, options])</code>: start stalking <code>threadId</code> (or the
+current thread if omitted), optionally with <code>options</code> for enabling events.</p>
+
+    <p>For example:</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">Stalker</span><span class="p">.</span><span class="nx">follow</span><span class="p">(</span><span class="nx">Process</span><span class="p">.</span><span class="nx">getCurrentThreadId</span><span class="p">(),</span> <span class="p">{</span>
+  <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">call</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// CALL instructions: yes please</span>
+    <span class="nx">ret</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// RET instructions: no thanks</span>
+    <span class="nx">exec</span><span class="o">:</span> <span class="kc">false</span> <span class="c1">// all instructions: no thanks</span>
+  <span class="p">},</span>
+  <span class="nx">onReceive</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">events</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Called with `events` containing a binary blob which is one or more</span>
+    <span class="c1">// GumEvent structs.  See `gumevent.h` for the format. This is obviously a</span>
+    <span class="c1">// terrible API that is subject to change once a better trade-off between</span>
+    <span class="c1">// ease-of-use and performance has been found.</span>
+  <span class="p">},</span>
+  <span class="nx">onCallSummary</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">summary</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Called with `summary` being a key-value mapping of call target to number</span>
+    <span class="c1">// of calls, in the current time window. You would typically implement this</span>
+    <span class="c1">// instead of `onReceive` for efficiency.</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<div class="note">
+  <h5>Performance considerations</h5>
+  <p>
+    The callbacks provided have a significant impact on performance. If you only
+    need periodic call summaries but do not care about the raw events, or the
+    other way around, make sure you omit the callback that you don't need; i.e.
+    avoid putting your logic in <i>onCallSummary</i> and leaving
+    <i>onReceive</i> in there as an empty callback.
+  </p>
+</div>
+
+<ul>
+  <li>
+    <p><code>Stalker.unfollow([threadId])</code>: stop stalking <code>threadId</code> (or the current
+thread if omitted).</p>
+  </li>
+  <li>
+    <p><code>Stalker.garbageCollect()</code>: free accumulated memory at a safe point after
+<code>Stalker#unfollow</code>. This is needed to avoid race-conditions where the
+thread just unfollowed is executing its last instructions.</p>
+  </li>
+  <li>
+    <p><code>Stalker.addCallProbe(address, callback)</code>: call <code>callback</code> (see
+<code>Interceptor#attach#onEnter</code> for signature) synchronously when a CALL is
+made to <code>address</code>. Returns an id that can be passed to
+<code>Stalker#removeCallProbe</code> later.</p>
+  </li>
+  <li>
+    <p>Stalker.removeCallProbe: remove a call probe added by
+<code>Stalker#addCallProbe</code>.</p>
+  </li>
+  <li>
+    <p><code>Stalker.trustThreshold</code>: an integer specifying how many times a piece of
+code needs to be executed before it is assumed it can be trusted to not
+mutate.
+Specify -1 for no trust (slow), 0 to trust code from the get-go, and N to
+trust code after it has been executed N times. Defaults to 1.</p>
+  </li>
+  <li>
+    <p><code>Stalker.queueCapacity</code>: an integer specifying the capacity of the event
+queue in number of events. Defaults to 16384 events.</p>
+  </li>
+  <li>
+    <p><code>Stalker.queueDrainInterval</code>: an integer specifying the time in milliseconds
+between each time the event queue is drained. Defaults to 250 ms, which
+means that the event queue is drained four times per second.</p>
+  </li>
+</ul>
+
+<h2 id="apiresolver">ApiResolver</h2>
+
+<ul>
+  <li>
+    <p><code>new ApiResolver(type)</code>: create a new resolver of the given <code>type</code>, allowing
+you to quickly find functions by name, with globs permitted. Precisely which
+resolvers are available depends on the current platform and runtimes loaded
+in the current process. As of the time of writing, the available resolvers
+are:</p>
+
+    <ul>
+      <li><code>module</code>: Resolves exported and imported functions of shared libraries
+          currently loaded. Always available.</li>
+      <li><code>objc</code>: Resolves Objective-C methods of classes currently loaded.
+        Available on macOS and iOS in processes that have the Objective-C
+        runtime loaded. Use <code>ObjC.available</code> to check at runtime, or
+        wrap your <code>new ApiResolver('objc')</code> call in a <em>try-catch</em>.</li>
+    </ul>
+
+    <p>The resolver will load the minimum amount of data required on creation, and
+lazy-load the rest depending on the queries it receives. It is thus
+recommended to use the same instance for a batch of queries, but recreate it
+for future batches to avoid looking at stale data.</p>
+  </li>
+  <li>
+    <p><code>enumerateMatches(query, callbacks)</code>: perform the resolver-specific <code>query</code>
+string, where <code>callbacks</code> is an object specifying:</p>
+
+    <ul>
+      <li>
+        <p><code>onMatch: function (match)</code>: called for each match, where <code>match</code> is an
+object with <code>name</code> and <code>address</code> keys.</p>
+      </li>
+      <li>
+        <p><code>onComplete: function ()</code>: called when all matches have been enumerated.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">resolver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ApiResolver</span><span class="p">(</span><span class="s1">&#39;module&#39;</span><span class="p">);</span>
+<span class="nx">resolver</span><span class="p">.</span><span class="nx">enumerateMatches</span><span class="p">(</span><span class="s1">&#39;exports:*!open*&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">onMatch</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/*</span>
+<span class="cm">     * Where `match` contains an object like this one:</span>
+<span class="cm">     *</span>
+<span class="cm">     * {</span>
+<span class="cm">     *     name: &#39;/usr/lib/libSystem.B.dylib!opendir$INODE64&#39;,</span>
+<span class="cm">     *     address: ptr(&#39;0x7fff870135c9&#39;)</span>
+<span class="cm">     * }</span>
+<span class="cm">     */</span>
+  <span class="p">},</span>
+  <span class="nx">onComplete</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">resolver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ApiResolver</span><span class="p">(</span><span class="s1">&#39;objc&#39;</span><span class="p">);</span>
+<span class="nx">resolver</span><span class="p">.</span><span class="nx">enumerateMatches</span><span class="p">(</span><span class="s1">&#39;-[NSURL* *HTTP*]&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">onMatch</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/*</span>
+<span class="cm">     * Where `match` contains an object like this one:</span>
+<span class="cm">     *</span>
+<span class="cm">     * {</span>
+<span class="cm">     *     name: &#39;-[NSURLRequest valueForHTTPHeaderField:]&#39;,</span>
+<span class="cm">     *     address: ptr(&#39;0x7fff94183e22&#39;)</span>
+<span class="cm">     * }</span>
+<span class="cm">     */</span>
+  <span class="p">},</span>
+  <span class="nx">onComplete</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<ul>
+  <li><code>enumerateMatchesSync(query)</code>: synchronous version of <code>enumerateMatches()</code>
+that returns the matches in an array.</li>
+</ul>
+
+<h2 id="debugsymbol">DebugSymbol</h2>
+
+<ul>
+  <li>
+    <p><code>DebugSymbol.fromAddress(address)</code>, <code>DebugSymbol.fromName(name)</code>:
+look up debug information for <code>address</code>/<code>name</code> and return it as an object
+containing:</p>
+
+    <ul>
+      <li><code>address</code>: Address that this symbol is for, as a <code>NativePointer</code>.</li>
+      <li><code>name</code>: Name of the symbol, as a string.</li>
+      <li><code>moduleName</code>: Module name owning this symbol, as a string.</li>
+      <li><code>fileName</code>: File name owning this symbol, as a string.</li>
+      <li><code>lineNumber</code>: Line number in <code>fileName</code>, as a JavaScript number.</li>
+    </ul>
+
+    <p>You may also call <code>toString()</code> on it, which is very useful when combined
+with <code>Thread.backtrace()</code>:</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">findExportByName</span><span class="p">(</span><span class="s2">&quot;libcommonCrypto.dylib&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CCCryptorCreate&quot;</span><span class="p">);</span>
+<span class="nx">Interceptor</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">onEnter</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;CCCryptorCreate called from:\n&quot;</span> <span class="o">+</span>
+            <span class="nx">Thread</span><span class="p">.</span><span class="nx">backtrace</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">context</span><span class="p">,</span> <span class="nx">Backtracer</span><span class="p">.</span><span class="nx">ACCURATE</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">DebugSymbol</span><span class="p">.</span><span class="nx">fromAddress</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;\n&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<ul>
+  <li>
+    <p><code>DebugSymbol.getFunctionByName(name)</code>: resolves a function name and
+returns its address as a <code>NativePointer</code>. Returns the first if more than
+one function is found. Throws an exception if the name cannot be resolved.</p>
+  </li>
+  <li>
+    <p><code>DebugSymbol.findFunctionsNamed(name)</code>: resolves a function name and returns
+its addresses as an array of <code>NativePointer</code> objects.</p>
+  </li>
+  <li>
+    <p><code>DebugSymbol.findFunctionsMatching(glob)</code>: resolves function names matching
+<code>glob</code> and returns their addresses as an array of <code>NativePointer</code> objects.</p>
+  </li>
+</ul>
+
+<h2 id="instruction">Instruction</h2>
+
+<ul>
+  <li>
+    <p><code>Instruction.parse(target)</code>: parse the instruction at the <code>target</code> address
+in memory, represented by a <code>NativePointer</code>.
+Note that on 32-bit ARM this address must have its least significant bit
+set to 0 for ARM functions, and 1 for Thumb functions. Frida takes care
+of this detail for you if you get the address from a Frida API (for
+example <code>Module.findExportByName()</code>).</p>
+
+    <p>The object returned has the fields:</p>
+
+    <ul>
+      <li><code>address</code>: Address (EIP) of this instruction, as a <code>NativePointer</code>.</li>
+      <li><code>next</code>: Pointer to the next instruction, so you can <code>parse()</code> it.</li>
+      <li><code>size</code>: Size of this instruction.</li>
+      <li><code>mnemonic</code>: String representation of instruction mnemonic.</li>
+      <li><code>opStr</code>: String representation of instruction operands.</li>
+      <li><code>toString()</code>: Convert to a human-readable string.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="objc">ObjC</h2>
+
+<ul>
+  <li>
+    <p><code>ObjC.available</code>: a boolean specifying whether the current process has an
+Objective-C runtime loaded. Do not invoke any other <code>ObjC</code> properties or
+methods unless this is the case.</p>
+  </li>
+  <li>
+    <p><code>ObjC.api</code>: an object mapping function names to <code>NativeFunction</code> instances
+for direct access to a big portion of the Objective-C runtime API.</p>
+  </li>
+  <li>
+    <p><code>ObjC.classes</code>: an object mapping class names to <code>ObjC.Object</code> JavaScript
+bindings for each of the currently registered classes. You can interact with objects by using dot notation and replacing colons with underscores, i.e.: <code>[NSString stringWithString:@"Hello World"]</code> becomes <code>var NSString = ObjC.classes.NSString; NSString.stringWithString_("Hello World");</code>. Note the underscore after the method name. Refer to iOS Examples section for more details.</p>
+  </li>
+  <li>
+    <p><code>ObjC.protocols</code>: an object mapping protocol names to <code>ObjC.Protocol</code>
+JavaScript bindings for each of the currently registered protocols.</p>
+  </li>
+  <li>
+    <p><code>ObjC.mainQueue</code>: the GCD queue of the main thread</p>
+  </li>
+  <li>
+    <p><code>ObjC.schedule(queue, work)</code>: schedule the JavaScript function <code>work</code> on
+the GCD queue specified by <code>queue</code>. An <code>NSAutoreleasePool</code> is created just
+before calling <code>work</code>, and cleaned up on return.</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">NSSound</span> <span class="o">=</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">classes</span><span class="p">.</span><span class="nx">NSSound</span><span class="p">;</span> <span class="cm">/* macOS */</span>
+<span class="nx">ObjC</span><span class="p">.</span><span class="nx">schedule</span><span class="p">(</span><span class="nx">ObjC</span><span class="p">.</span><span class="nx">mainQueue</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">sound</span> <span class="o">=</span> <span class="nx">NSSound</span><span class="p">.</span><span class="nx">alloc</span><span class="p">().</span><span class="nx">initWithContentsOfFile_byReference_</span><span class="p">(</span><span class="s2">&quot;/Users/oleavr/.Trash/test.mp3&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nx">sound</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+<span class="p">});</span></code></pre></figure>
+
+<ul>
+  <li><code>new ObjC.Object(handle[, protocol])</code>: create a JavaScript binding given
+the existing object at <code>handle</code> (a NativePointer). You may also specify
+the <code>protocol</code> argument if you’d like to treat <code>handle</code> as an object
+implementing a certain protocol only.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">Interceptor</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">myFunction</span><span class="p">.</span><span class="nx">implementation</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">onEnter</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ObjC: args[0] = self, args[1] = selector, args[2-n] = arguments</span>
+    <span class="kd">var</span> <span class="nx">myString</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nb">Object</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;String argument: &quot;</span> <span class="o">+</span> <span class="nx">myString</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<blockquote>
+  <p>This object has some special properties:</p>
+
+  <ul>
+    <li><code>$kind</code>: string specifying either <code>instance</code>, <code>class</code> or <code>meta-class</code></li>
+    <li><code>$super</code>: an <em>ObjC.Object</em> instance used for chaining up to super-class
+method implementations</li>
+    <li><code>$superClass</code>: super-class as an <em>ObjC.Object</em> instance</li>
+    <li><code>$class</code>: class of this object as an <em>ObjC.Object</em> instance</li>
+    <li><code>$className</code>: string containing the class name of this object</li>
+    <li><code>$protocols</code>: object mapping protocol name to <code>ObjC.Protocol</code> instance
+for each of the protocols that this object conforms to</li>
+    <li><code>$methods</code>: array containing native method names exposed by this object’s
+class and parent classes</li>
+    <li><code>$ownMethods</code>: array containing native method names exposed by this object’s
+class, not including parent classes</li>
+    <li><code>$ivars</code>: object mapping each instance variable name to its current
+value, allowing you to read and write each through access and assignment</li>
+  </ul>
+
+  <p>There is also an <code>equals(other)</code> method for checking whether two instances
+  refer to the same underlying object.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p><code>new ObjC.Protocol(handle)</code>: create a JavaScript binding given the existing
+protocol at <code>handle</code> (a NativePointer).</p>
+  </li>
+  <li>
+    <p><code>new ObjC.Block(target)</code>: create a JavaScript binding given the existing
+block at <code>target</code> (a NativePointer), or, to define a new block, <code>target</code>
+should be an object specifying the type signature and JavaScript function to
+call whenever the block is invoked. The function is specified with an
+<code>implementation</code> key, and the signature is specified either through a
+<code>types</code> key, or through the <code>retType</code> and <code>argTypes</code> keys. See
+<code>ObjC.registerClass()</code> for details.</p>
+
+    <p>The most common use-case is hooking an existing block, which for a block
+expecting two arguments would look something like:</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">pendingBlocks</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Set</span><span class="p">();</span>
+
+<span class="nx">Interceptor</span><span class="p">.</span><span class="nx">attach</span><span class="p">(...,</span> <span class="p">{</span>
+  <span class="nx">onEnter</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">block</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">Block</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span>
+    <span class="nx">pendingBlocks</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">block</span><span class="p">);</span> <span class="c1">// Keep it alive</span>
+    <span class="kr">const</span> <span class="nx">appCallback</span> <span class="o">=</span> <span class="nx">block</span><span class="p">.</span><span class="nx">implementation</span><span class="p">;</span>
+    <span class="nx">block</span><span class="p">.</span><span class="nx">implementation</span> <span class="o">=</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// Do your logging here</span>
+      <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">appCallback</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+      <span class="nx">pendingBlocks</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">block</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<ul>
+  <li><code>ObjC.implement(method, fn)</code>: create a JavaScript implementation compatible
+with the signature of <code>method</code>, where the JavaScript function <code>fn</code> is used
+as the implementation. Returns a <code>NativeCallback</code> that you may assign to an
+ObjC method’s <code>implementation</code> property.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">NSSound</span> <span class="o">=</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">classes</span><span class="p">.</span><span class="nx">NSSound</span><span class="p">;</span> <span class="cm">/* macOS */</span>
+<span class="kd">var</span> <span class="nx">oldImpl</span> <span class="o">=</span> <span class="nx">NSSound</span><span class="p">.</span><span class="nx">play</span><span class="p">.</span><span class="nx">implementation</span><span class="p">;</span>
+<span class="nx">NSSound</span><span class="p">.</span><span class="nx">play</span><span class="p">.</span><span class="nx">implementation</span> <span class="o">=</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">implement</span><span class="p">(</span><span class="nx">NSSound</span><span class="p">.</span><span class="nx">play</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">handle</span><span class="p">,</span> <span class="nx">selector</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">oldImpl</span><span class="p">(</span><span class="nx">handle</span><span class="p">,</span> <span class="nx">selector</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">NSView</span> <span class="o">=</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">classes</span><span class="p">.</span><span class="nx">NSView</span><span class="p">;</span> <span class="cm">/* macOS */</span>
+<span class="kd">var</span> <span class="nx">drawRect</span> <span class="o">=</span> <span class="nx">NSView</span><span class="p">[</span><span class="s1">&#39;- drawRect:&#39;</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">oldImpl</span> <span class="o">=</span> <span class="nx">drawRect</span><span class="p">.</span><span class="nx">implementation</span><span class="p">;</span>
+<span class="nx">drawRect</span><span class="p">.</span><span class="nx">implementation</span> <span class="o">=</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">implement</span><span class="p">(</span><span class="nx">drawRect</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">handle</span><span class="p">,</span> <span class="nx">selector</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">oldImpl</span><span class="p">(</span><span class="nx">handle</span><span class="p">,</span> <span class="nx">selector</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<blockquote>
+  <p>As the <code>implementation</code> property is a <code>NativeFunction</code> and thus also a
+  <code>NativePointer</code>, you may also use <code>Interceptor</code> to hook functions:</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">NSSound</span> <span class="o">=</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">classes</span><span class="p">.</span><span class="nx">NSSound</span><span class="p">;</span> <span class="cm">/* macOS */</span>
+<span class="nx">Interceptor</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">NSSound</span><span class="p">.</span><span class="nx">play</span><span class="p">.</span><span class="nx">implementation</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">onEnter</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">send</span><span class="p">(</span><span class="s2">&quot;[NSSound play]&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<ul>
+  <li>
+    <p><code>ObjC.registerProxy(properties)</code>: create a new class designed to act as a
+proxy for a target object, where <code>properties</code> is an object specifying:</p>
+
+    <ul>
+      <li><code>protocols</code>: (optional) Array of protocols this class conforms to.</li>
+      <li><code>methods</code>: (optional) Object specifying methods to implement.</li>
+      <li><code>events</code>: (optional) Object specifying callbacks for getting notified
+about events. For now there’s just one event:
+        <ul>
+          <li><code>forward: function (name)</code>: Called with <code>name</code> specifying the
+method name that we’re about to forward a call to. This might be
+where you’d start out with a temporary callback that just logs the
+names to help you decide which methods to override.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">MyConnectionDelegateProxy</span> <span class="o">=</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">registerProxy</span><span class="p">({</span>
+  <span class="nx">protocols</span><span class="o">:</span> <span class="p">[</span><span class="nx">ObjC</span><span class="p">.</span><span class="nx">protocols</span><span class="p">.</span><span class="nx">NSURLConnectionDataDelegate</span><span class="p">],</span>
+  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;- connection:didReceiveResponse:&#39;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">resp</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/* fancy logging code here */</span>
+      <span class="cm">/* this.data.foo === 1234 */</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">target</span>
+          <span class="p">.</span><span class="nx">connection_didReceiveResponse_</span><span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">resp</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;- connection:didReceiveData:&#39;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/* other logging code here */</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">target</span>
+          <span class="p">.</span><span class="nx">connection_didReceiveData_</span><span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">forward</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;*** forwarding: &#39;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kr">const</span> <span class="nx">method</span> <span class="o">=</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">classes</span><span class="p">.</span><span class="nx">NSURLConnection</span><span class="p">[</span>
+    <span class="s1">&#39;- initWithRequest:delegate:startImmediately:&#39;</span><span class="p">];</span>
+<span class="nx">Interceptor</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">implementation</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">onEnter</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">args</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyConnectionDelegateProxy</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">{</span>
+      <span class="nx">foo</span><span class="o">:</span> <span class="mi">1234</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<ul>
+  <li>
+    <p><code>ObjC.registerClass(properties)</code>: create a new Objective-C class, where
+<code>properties</code> is an object specifying:</p>
+
+    <ul>
+      <li><code>name</code>: (optional) String specifying the name of the class; omit this
+if you don’t care about the globally visible name and would like the
+runtime to auto-generate one for you.</li>
+      <li><code>super</code>: (optional) Super-class, or <em>null</em> to create a new root class;
+omit to inherit from <em>NSObject</em>.</li>
+      <li><code>protocols</code>: (optional) Array of protocols this class conforms to.</li>
+      <li><code>methods</code>: (optional) Object specifying methods to implement.</li>
+    </ul>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">MyConnectionDelegateProxy</span> <span class="o">=</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">registerClass</span><span class="p">({</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;MyConnectionDelegateProxy&#39;</span><span class="p">,</span>
+  <span class="kr">super</span><span class="o">:</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">classes</span><span class="p">.</span><span class="nx">NSObject</span><span class="p">,</span>
+  <span class="nx">protocols</span><span class="o">:</span> <span class="p">[</span><span class="nx">ObjC</span><span class="p">.</span><span class="nx">protocols</span><span class="p">.</span><span class="nx">NSURLConnectionDataDelegate</span><span class="p">],</span>
+  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;- init&#39;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="kr">super</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">self</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">ObjC</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="p">{</span>
+          <span class="nx">foo</span><span class="o">:</span> <span class="mi">1234</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="nx">self</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;- dealloc&#39;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">ObjC</span><span class="p">.</span><span class="nx">unbind</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">self</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="kr">super</span><span class="p">.</span><span class="nx">dealloc</span><span class="p">();</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;- connection:didReceiveResponse:&#39;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">resp</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/* this.data.foo === 1234 */</span>
+    <span class="p">},</span>
+    <span class="cm">/*</span>
+<span class="cm">     * But those previous methods are declared assuming that</span>
+<span class="cm">     * either the super-class or a protocol we conform to has</span>
+<span class="cm">     * the same method so we can grab its type information.</span>
+<span class="cm">     * However, if that&#39;s not the case, you would write it</span>
+<span class="cm">     * like this:</span>
+<span class="cm">     */</span>
+    <span class="s1">&#39;- connection:didReceiveResponse:&#39;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">retType</span><span class="o">:</span> <span class="s1">&#39;void&#39;</span><span class="p">,</span>
+      <span class="nx">argTypes</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">],</span>
+      <span class="nx">implementation</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">resp</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="cm">/* Or grab it from an existing class: */</span>
+    <span class="s1">&#39;- connection:didReceiveResponse:&#39;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">types</span><span class="o">:</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">classes</span>
+          <span class="p">.</span><span class="nx">Foo</span><span class="p">[</span><span class="s1">&#39;- connection:didReceiveResponse:&#39;</span><span class="p">].</span><span class="nx">types</span><span class="p">,</span>
+      <span class="nx">implementation</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">resp</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="cm">/* Or from an existing protocol: */</span>
+    <span class="s1">&#39;- connection:didReceiveResponse:&#39;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">types</span><span class="o">:</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">protocols</span><span class="p">.</span><span class="nx">NSURLConnectionDataDelegate</span>
+          <span class="p">.</span><span class="nx">methods</span><span class="p">[</span><span class="s1">&#39;- connection:didReceiveResponse:&#39;</span><span class="p">].</span><span class="nx">types</span><span class="p">,</span>
+      <span class="nx">implementation</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">resp</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="cm">/* Or write the signature by hand if you really want to: */</span>
+    <span class="s1">&#39;- connection:didReceiveResponse:&#39;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">types</span><span class="o">:</span> <span class="s1">&#39;v32@0:8@16@24&#39;</span><span class="p">,</span>
+      <span class="nx">implementation</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">resp</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kr">const</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="nx">MyConnectionDelegateProxy</span><span class="p">.</span><span class="nx">alloc</span><span class="p">().</span><span class="nx">init</span><span class="p">();</span>
+<span class="cm">/* use `proxy`, and later: */</span>
+<span class="nx">proxy</span><span class="p">.</span><span class="nx">release</span><span class="p">();</span></code></pre></figure>
+
+<ul>
+  <li>
+    <p><code>ObjC.registerProtocol(properties)</code>: create a new Objective-C protocol,
+where <code>properties</code> is an object specifying:</p>
+
+    <ul>
+      <li><code>name</code>: (optional) String specifying the name of the protocol; omit this
+if you don’t care about the globally visible name and would like the
+runtime to auto-generate one for you.</li>
+      <li><code>protocols</code>: (optional) Array of protocols this protocol incorporates.</li>
+      <li><code>methods</code>: (optional) Object specifying methods to declare.</li>
+    </ul>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">MyDataDelegate</span> <span class="o">=</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">registerProtocol</span><span class="p">({</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;MyDataDelegate&#39;</span><span class="p">,</span>
+  <span class="nx">protocols</span><span class="o">:</span> <span class="p">[</span><span class="nx">ObjC</span><span class="p">.</span><span class="nx">protocols</span><span class="p">.</span><span class="nx">NSURLConnectionDataDelegate</span><span class="p">],</span>
+  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+    <span class="cm">/* You must specify the signature: */</span>
+    <span class="s1">&#39;- connection:didStuff:&#39;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">retType</span><span class="o">:</span> <span class="s1">&#39;void&#39;</span><span class="p">,</span>
+      <span class="nx">argTypes</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="cm">/* Or grab it from a method of an existing class: */</span>
+    <span class="s1">&#39;- connection:didStuff:&#39;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">types</span><span class="o">:</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">classes</span>
+          <span class="p">.</span><span class="nx">Foo</span><span class="p">[</span><span class="s1">&#39;- connection:didReceiveResponse:&#39;</span><span class="p">].</span><span class="nx">types</span>
+    <span class="p">},</span>
+    <span class="cm">/* Or from an existing protocol method: */</span>
+    <span class="s1">&#39;- connection:didStuff:&#39;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">types</span><span class="o">:</span> <span class="nx">ObjC</span><span class="p">.</span><span class="nx">protocols</span><span class="p">.</span><span class="nx">NSURLConnectionDataDelegate</span>
+          <span class="p">.</span><span class="nx">methods</span><span class="p">[</span><span class="s1">&#39;- connection:didReceiveResponse:&#39;</span><span class="p">].</span><span class="nx">types</span>
+    <span class="p">},</span>
+    <span class="cm">/* Or write the signature by hand if you really want to: */</span>
+    <span class="s1">&#39;- connection:didStuff:&#39;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">types</span><span class="o">:</span> <span class="s1">&#39;v32@0:8@16@24&#39;</span>
+    <span class="p">},</span>
+    <span class="cm">/* You can also make a method optional (default is required): */</span>
+    <span class="s1">&#39;- connection:didStuff:&#39;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">retType</span><span class="o">:</span> <span class="s1">&#39;void&#39;</span><span class="p">,</span>
+      <span class="nx">argTypes</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">],</span>
+      <span class="nx">optional</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<ul>
+  <li>
+    <p><code>ObjC.bind(obj, data)</code>: bind some JavaScript data to an Objective-C
+instance; see <code>ObjC.registerClass()</code> for an example.</p>
+  </li>
+  <li>
+    <p><code>ObjC.unbind(obj)</code>: unbind previous associated JavaScript data from an
+Objective-C instance; see <code>ObjC.registerClass()</code> for an example.</p>
+  </li>
+  <li>
+    <p><code>ObjC.getBoundData(obj)</code>: look up previously bound data from an Objective-C
+object.</p>
+  </li>
+  <li>
+    <p><code>ObjC.choose(specifier, callbacks)</code>: enumerate live instances of classes
+matching <code>specifier</code> by scanning the heap. <code>specifier</code> is either a class
+selector or an object specifying a class selector and desired options.
+The class selector is an <em>ObjC.Object</em> of a class, e.g.
+<em>ObjC.classes.UIButton</em>.
+When passing an object as the specifier you should provide the <code>class</code>
+field with your class selector, and the <code>subclasses</code> field with a
+boolean indicating whether you’re also interested in subclasses matching the
+given class selector. The default is to also include subclasses.
+The <code>callbacks</code> argument is an object specifying:</p>
+
+    <ul>
+      <li>
+        <p><code>onMatch: function (instance)</code>: called once for each live instance found
+with a ready-to-use <code>instance</code> just as if you would have called
+<code>new ObjC.Object(ptr("0x1234"))</code> knowing that this particular
+Objective-C instance lives at <em>0x1234</em>.</p>
+
+        <p>This function may return the string <code>stop</code> to cancel the enumeration
+early.</p>
+      </li>
+      <li>
+        <p><code>onComplete: function ()</code>: called when all instances have been enumerated</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><code>ObjC.chooseSync(specifier)</code>: synchronous version of <code>choose()</code> that returns
+the instances in an array.</p>
+  </li>
+  <li>
+    <p><code>ObjC.selector(name)</code>: convert the JavaScript string <code>name</code> to a selector</p>
+  </li>
+  <li>
+    <p><code>ObjC.selectorAsString(sel)</code>: convert the selector <code>sel</code> to a JavaScript
+string</p>
+  </li>
+</ul>
+
+<h2 id="java">Java</h2>
+
+<ul>
+  <li>
+    <p><code>Java.available</code>: a boolean specifying whether the current process has the
+a Java VM loaded, i.e. Dalvik or ART. Do not invoke any other <code>Java</code>
+properties or methods unless this is the case.</p>
+  </li>
+  <li>
+    <p><code>Java.enumerateLoadedClasses(callbacks)</code>: enumerate classes loaded right
+now, where <code>callbacks</code> is an object specifying:</p>
+
+    <ul>
+      <li>
+        <p><code>onMatch: function (className)</code>: called for each loaded class with
+<code>className</code> that may be passed to <code>use()</code> to get a JavaScript wrapper.</p>
+      </li>
+      <li>
+        <p><code>onComplete: function ()</code>: called when all classes have been enumerated.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><code>Java.enumerateLoadedClassesSync()</code>: synchronous version of
+<code>enumerateLoadedClasses()</code> that returns the class names in an array.</p>
+  </li>
+  <li>
+    <p><code>Java.perform(fn)</code>: ensure that the current thread is attached to the VM
+and call <code>fn</code>. (This isn’t necessary in callbacks from Java.)</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">Java</span><span class="p">.</span><span class="nx">perform</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Activity</span> <span class="o">=</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&quot;android.app.Activity&quot;</span><span class="p">);</span>
+    <span class="nx">Activity</span><span class="p">.</span><span class="nx">onResume</span><span class="p">.</span><span class="nx">implementation</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">send</span><span class="p">(</span><span class="s2">&quot;onResume() got called! Let&#39;s call the original implementation&quot;</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">onResume</span><span class="p">();</span>
+    <span class="p">};</span>
+<span class="p">});</span></code></pre></figure>
+
+<ul>
+  <li><code>Java.use(className)</code>: dynamically get a JavaScript wrapper for
+<code>className</code> that you can instantiate objects from by calling <code>$new()</code> on
+it to invoke a constructor. Call <code>$dispose()</code> on an instance to clean it
+up explicitly (or wait for the JavaScript object to get garbage-collected,
+or script to get unloaded). Static and non-static methods are available,
+and you can even replace a method implementation and throw an exception
+from it:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">Java</span><span class="p">.</span><span class="nx">perform</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Activity</span> <span class="o">=</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&quot;android.app.Activity&quot;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">Exception</span> <span class="o">=</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&quot;java.lang.Exception&quot;</span><span class="p">);</span>
+    <span class="nx">Activity</span><span class="p">.</span><span class="nx">onResume</span><span class="p">.</span><span class="nx">implementation</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="nx">Exception</span><span class="p">.</span><span class="nx">$new</span><span class="p">(</span><span class="s2">&quot;Oh noes!&quot;</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">});</span></code></pre></figure>
+
+<ul>
+  <li>
+    <p><code>Java.scheduleOnMainThread(fn)</code>: run <code>fn</code> on the main thread of the VM.</p>
+  </li>
+  <li>
+    <p><code>Java.choose(className, callbacks)</code>: enumerate live instances of the
+<code>className</code> class by scanning the Java heap, where <code>callbacks</code> is an
+object specifying:</p>
+
+    <ul>
+      <li>
+        <p><code>onMatch: function (instance)</code>: called once for each live instance found
+with a ready-to-use <code>instance</code> just as if you would have called
+<code>Java.cast()</code> with a raw handle to this particular instance.</p>
+
+        <p>This function may return the string <code>stop</code> to cancel the enumeration
+early.</p>
+      </li>
+      <li>
+        <p><code>onComplete: function ()</code>: called when all instances have been enumerated</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><code>Java.cast(handle, klass)</code>: create a JavaScript wrapper given the existing
+instance at <code>handle</code> of given class <code>klass</code> (as returned from
+<code>Java.use()</code>). Such a wrapper also has a <code>class</code> property for getting a
+wrapper for its class, and a <code>$className</code> property for getting a string
+representation of its class-name.</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">Activity</span> <span class="o">=</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&quot;android.app.Activity&quot;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">activity</span> <span class="o">=</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">cast</span><span class="p">(</span><span class="nx">ptr</span><span class="p">(</span><span class="s2">&quot;0x1234&quot;</span><span class="p">),</span> <span class="nx">Activity</span><span class="p">);</span></code></pre></figure>
+
+<h2 id="weakref">WeakRef</h2>
+
+<ul>
+  <li>
+    <p><code>WeakRef.bind(value, fn)</code>: monitor <code>value</code> and call the <code>fn</code> callback as
+soon as <code>value</code> has been garbage-collected, or the script is about to get
+unloaded. Returns an id that you can pass to <code>WeakRef.unbind()</code> for
+explicit cleanup.</p>
+
+    <p>This API is useful if you’re building a language-binding, where you need to
+free native resources when a JS value is no longer needed.</p>
+  </li>
+  <li>
+    <p><code>WeakRef.unbind(id)</code>: stop monitoring the value passed to
+<code>WeakRef.bind(value, fn)</code>, and call the <code>fn</code> callback immediately.</p>
+  </li>
+</ul>
+
+          
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="section-nav">
+      <div class="left align-right">
+          
+            
+            
+            <a href="/docs/frida-discover/" class="prev">Back</a>
+          
+      </div>
+      <div class="right align-left">
+          
+            
+            
+            <a href="/docs/c-api/" class="next">Next</a>
+          
+      </div>
+    </div>
+    <div class="clear"></div>
+    
+
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+
+  <footer>
+  <div class="grid">
+    <div class="unit whole align-right center-on-mobiles">
+      <div class="sponsored-by">
+        <h5>Sponsored by:</h5>
+        <a href="https://www.nowsecure.com">
+          <img src="/img/nowsecure-logo.png" alt="NowSecure">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+
+
+  <!-- Google Analytics (http://google.com/analytics) -->
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46880695-1']);
+    _gaq.push(['_setDomainName', 'http://www.frida.re']); // Multiple sub-domains
+    _gaq.push(['_setAllowLinker', true]); // Multiple TLDs
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+</body>
+</html>
